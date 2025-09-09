@@ -1,0 +1,56 @@
+/* ScrollingBar.css */
+
+/* Container for the moving bar */
+.scrolling-bar {
+  width: 100%; /* Full width */
+  white-space: nowrap; /* Prevent line breaks */
+  overflow: hidden; /* Hide the overflow */
+  background: linear-gradient(
+    to right, 
+    #A6A8AB 0%, 
+    #FFFFFF 17%, 
+    #F1F1F1 31%, 
+    #D4D6D7 48%, 
+    #B3B5B8 57%, 
+    #9E9E9E 71%, 
+    #BDC0C2 85%, 
+    #EAEBEC 99%
+  );
+  padding: 10px 0; /* Padding to center the text vertically */
+  display: flex;
+  align-items: center; /* Vertically center text */
+  position: relative;
+  z-index: 1;
+}
+
+/* Make the list items move from right to left */
+.scrolling-bar ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: disc; /* Default bullet point style */
+  animation: scrollText 20s linear infinite; /* Faster scrolling (20 seconds) */
+  animation-play-state: running; /* Ensure animation is running after page load */
+}
+
+/* Change the color of the bullet point to blue */
+.scrolling-bar ul li::marker {
+  color: blue; /* Change bullet point color to blue */
+}
+
+/* List item style */
+.scrolling-bar li {
+  display: inline-block; /* Inline block for each list item */
+  margin-right: 50px; /* Space between list items */
+  font-size: 20px; /* Text size */
+}
+
+/* Animation to move text from right to left */
+@keyframes scrollText {
+  0% {
+    transform: translateX(100%); /* Start from the right side */
+  }
+  100% {
+    transform: translateX(-100%); /* Move to the left side */
+  }
+}

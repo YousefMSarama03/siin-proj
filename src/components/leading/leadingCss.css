@@ -1,0 +1,14 @@
+.glow-wave {
+    filter: drop-shadow(0 0 5px rgb(215, 237, 237));
+    animation: glowEffect 1.5s infinite alternate;
+  }
+  
+  @keyframes glowEffect {
+    0% {
+      filter: drop-shadow(0 0 5px rgb(215, 237, 237));
+    }
+  
+    100% {
+      filter: drop-shadow(0 0 20px rgb(215, 237, 237));
+    }
+  }
