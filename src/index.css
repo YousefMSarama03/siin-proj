@@ -12,14 +12,14 @@ body {
 
 /* Dark mode styles */
 .dark body {
-  background-color: #fff;
+  background-color: #000000;
   color: #FFFFFF;
 }
 
 /* Light mode styles */
 .light body {
   background-color: #FFFFFF;
-  color: #fff;
+  color: #000000;
 }
 
 .blueSiin {
@@ -33,7 +33,7 @@ body {
 
 /* Track */
 .dark ::-webkit-scrollbar-track {
-  background: #fff;
+  background: #000000;
 }
 
 .light ::-webkit-scrollbar-track {

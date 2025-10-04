@@ -19,7 +19,7 @@ function Home() {
                         </div>
 
                         <div className='md:absolute z-50 lg:left-[210px] md:left-[155px] top-[220px] max-md:px-4 max-md:pt-8 max-md:pb-8'>
-                            <h1 className='text-white dark:text-white text-[70px] font-bold max-lg:text-5xl max-md:text-3xl md:leading-relaxed max-md:leading-[2] capitalize'>
+                            <h1 className='text-black dark:text-white text-[70px] font-bold max-lg:text-5xl max-md:text-3xl md:leading-relaxed max-md:leading-[2] capitalize'>
                                 Cloud.Data. Analysis.
                                 <br />
                                 in-house development.
