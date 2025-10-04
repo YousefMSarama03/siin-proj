@@ -21,18 +21,9 @@ import Footer from "../Footer/Footer";
 
 
 const employees = [
-  { id: 1, name: 'yousef sarama', age: 30, job: 'Software Engineer' },
-  { id: 2, name: 'ahmad humira', age: 30, job: 'Maneger' },
-  { id: 3, name: 'fatima zahrea', age: 30, job: 'Designer UI' },
-  { id: 4, name: 'aya nam', age: 30, job: 'merketing' },
-  { id: 1, name: 'yousef sarama', age: 30, job: 'Software Engineer' },
-  { id: 2, name: 'ahmad humira', age: 30, job: 'Maneger' },
-  { id: 3, name: 'fatima zahrea', age: 30, job: 'Designer UI' },
-  { id: 4, name: 'aya nam', age: 30, job: 'merketing' },
-  { id: 1, name: 'yousef sarama', age: 30, job: 'Software Engineer' },
-  { id: 2, name: 'ahmad humira', age: 30, job: 'Maneger' },
-  { id: 3, name: 'fatima zahrea', age: 30, job: 'Designer UI' },
-  { id: 4, name: 'aya nam', age: 30, job: 'merketing' },
+  { id: 1, name: 'Adel Mohammed', age: 30, job: 'Tech lead' },
+  { id: 2, name: 'Khaled Mansour', age: 30, job: 'Head of Software Department' },
+  { id: 3, name: 'Mohammed Tariq', age: 30, job: 'CEO' },
 
 ]
 
@@ -104,13 +95,13 @@ const About = () => {
             </div>
 
 
-            <div className='w-ful h-auto md:mt-[150px] mt-[65px] '>
-              <div className='text-center items-center'>
+            <div className='w-full h-auto md:mt-[150px] mt-[65px] mb-24 md:mb-32'>
+              <div className='text-center items-center mb-12'>
                 <h1 className='lg:text-[48px] text-[25px] uppercase font-bold text-gray-900 dark:text-white'><span className='blueSiin '>Our</span> Team Members</h1>
                 <p className='text-sm md:text-[18px] text-balance uppercase leading-[40px] lg:px-72 pt-4 text-gray-700 dark:text-gray-300'>Partnering with SIIN offers a multitude of advantages. Experience increased brand visibility, improved customer engagement, and higher ROI. Our tailored solutions are designed to meet your unique business needs, ensuring lasting success.</p>
               </div>
 
-              <div className='w-full h-auto grid grid-cols-1 md:grid-cols-3  lg:grid-cols-3 xl:grid-cols-4 lg:gap-8 gap-4 lg:p-[125px] '>
+              <div className='w-full h-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto px-8 my-12'>
                 <Info employees={employees} />
               </div>
 
