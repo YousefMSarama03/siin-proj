@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import Ellipse from "../../assets/NavAssests/Ellipse.svg";
 import siin from "../../assets/NavAssests/siin.svg";
 import SearchIcon from "./SearchIcon";
-import Hr from "../../assets/NavAssests/Hr.svg";
+import Hr from "../../assets/NavAssests/hr.svg";
 import Burger from "../../assets/NavAssests/burger.svg";
 import BurgerBlack from "../../assets/NavAssests/burger-black.svg";
 import light from "../../assets/NavAssests/Union.svg";
