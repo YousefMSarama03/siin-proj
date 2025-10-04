@@ -1,6 +1,6 @@
 import React from 'react';
 import icon from "../../assets/homeAssests/icon.svg";
-import ground from "../../assets/homeAssests/ground.PNG";
+import ground from "../../assets/homeAssests/ground.png";
 import linkedin from "../About/Card/linkedin.svg";
 import insta from "../About/Card/insta.svg";
 import twitter from "../About/Card/twitter.svg";
