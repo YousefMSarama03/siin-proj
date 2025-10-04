@@ -9,7 +9,7 @@ import Button from "../../assets/homeAssests/Button.svg";
 import Line from "../../assets/homeAssests/Line.svg";
 import Info from "./Card/Info";
 import icon from "../../assets/homeAssests/icon.svg";
-import ground from "../../assets/homeAssests/ground.PNG";
+import ground from "../../assets/homeAssests/ground.png";
 import insta from "./Card/insta.svg";
 import twitter from "./Card/twitter.svg";
 import linkedin from "./Card/linkedin.svg";
