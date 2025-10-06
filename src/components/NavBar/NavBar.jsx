@@ -53,7 +53,7 @@ const NavBar = () => {
                     {/* Right Icons */}
                     <div className="flex items-center md:flex xl:gap-10 md:gap-5">
                         <button aria-label="Search" className="cursor-pointer hover:opacity-70 transition-opacity">
-                            <SearchIcon className="w-6 h-6 text-black dark:text-white transition-colors" />
+                            {/* <SearchIcon className="w-6 h-6 text-black dark:text-white transition-colors" /> */}
                         </button>
                         <img src={Hr} alt="" role="presentation" className={`w-[3px] ${isOpened ? "invisible" : "md:flex"}`} />
 

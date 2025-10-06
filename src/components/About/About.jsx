@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Tabe from "../../assets/homeAssests/Tabe.svg";
 import Tag from "../../assets/homeAssests/Tag.svg";
 import N from "../../assets/homeAssests/N.svg";
@@ -29,9 +29,21 @@ const employees = [
 
 
 const About = () => {
-
-
   const [Ishidden, setHidden] = useState("hidden");
+  const [buttonText, setButtonText] = useState("More About Siin");
+
+  useEffect(() => {
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+    };
+  }, []);
 
 
   return (
@@ -60,7 +72,30 @@ const About = () => {
                   Cyprus. We help startups & Fortune 500 companies delight humans
                   on the other side of the screen.
                 </p>
-                <a href="#More" ><img src={Contact} onClick={() => { setHidden("block") }} alt="contact icon" className='lg:w-[8rem] w-[6rem] mt-2  inline cursor-pointer hover:scale-110 hover:shadow-lg hover:ring-2 hover:ring-blue-200 dark:hover:ring-blue-900 transition-all duration-200 border-0' /></a>
+                <a
+                  href="#More"
+                  onClick={() => { 
+                    if (Ishidden === "hidden") {
+                      setHidden("block");
+                      setButtonText("Less About Siin");
+                      // Restore scrolling when content is revealed
+                      document.body.style.overflow = '';
+                      document.documentElement.style.overflow = '';
+                    } else {
+                      setHidden("hidden");
+                      setButtonText("More About Siin");
+                      // Hide scrolling when content is hidden
+                      document.body.style.overflow = 'hidden';
+                      document.documentElement.style.overflow = 'hidden';
+                    }
+                  }}
+                  className='mt-2 inline-flex items-center gap-3 cursor-pointer select-none px-4 py-2 rounded-lg uppercase tracking-wider font-semibold
+                             text-blueSiin underline decoration-blueSiin decoration-2 underline-offset-4
+                             transition-all duration-300 ease-out
+                             hover:-translate-y-0.5 hover:scale-105 hover:shadow-lg hover:bg-blueSiin/5 dark:hover:bg-blueSiin/10'
+                >
+                  <span>{buttonText}</span>
+                </a>
               </div>
             </div>
           </div>
@@ -69,11 +104,11 @@ const About = () => {
             <div className=" relative flex flex-col lg:flex-row justify-around items-baseline">
               <img src={Brands} alt="Brands" className="w-[90%] md:w-[35rem] pt-7" />
 
-              <img
+              {/*<img
                 src={Button}
                 alt="button icon"
                 className="relative top-6 w-[8rem] max-lg:left-[250px] lg:w-[14rem] hover:scale-110 hover:shadow-lg hover:ring-2 hover:ring-blue-200 dark:hover:ring-blue-900 transition-all duration-200 border-0"
-              />
+              />*/}
             </div>
             <img
               src={Line}

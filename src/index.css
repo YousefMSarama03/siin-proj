@@ -11,13 +11,13 @@ body {
 }
 
 /* Dark mode styles */
-.dark body {
+.dark {
   background-color: #000000;
   color: #FFFFFF;
 }
 
 /* Light mode styles */
-.light body {
+.light {
   background-color: #FFFFFF;
   color: #000000;
 }
@@ -32,11 +32,11 @@ body {
 }
 
 /* Track */
-.dark ::-webkit-scrollbar-track {
+.dark::-webkit-scrollbar-track {
   background: #000000;
 }
 
-.light ::-webkit-scrollbar-track {
+.light::-webkit-scrollbar-track {
   background: #FFFFFF;
 }
 

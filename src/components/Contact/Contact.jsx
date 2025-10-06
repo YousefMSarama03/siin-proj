@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { MdLocationOn, MdPhone, MdEmail, MdAccessTime } from 'react-icons/md';
+import { FaLinkedin, FaInstagram, FaTwitter } from 'react-icons/fa';
 import Tag from "../../assets/homeAssests/Tag.svg";
 import N from "../../assets/homeAssests/N.svg";
 import Contact from "../../assets/homeAssests/contact.svg";
@@ -7,6 +9,9 @@ import Line from "../../assets/homeAssests/Line.svg";
 import Footer from "../Footer/Footer";
 
 const ContactPage = () => {
+  const [Ishidden, setHidden] = useState("hidden");
+  const [buttonText, setButtonText] = useState("Contact with us");
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -40,7 +45,7 @@ const ContactPage = () => {
   ];
 
   return (
-  <section className="min-h-screen bg-white text-gray-800 dark:bg-black dark:text-white transition-colors duration-300 pt-28">
+  <section className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
       <div className='max-lg:px-4'>
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row w-full">
@@ -53,7 +58,7 @@ const ContactPage = () => {
           </div>
 
           {/* Right Section */}
-          <div className="w-full lg:w-[65%] flex flex-col justify-center lg:text-left text-start lg:p-24">
+          <div className="w-full lg:w-[65%] flex flex-col justify-center lg:text-left text-start lg:p-24 border-0">
             <div className='text-start uppercase text-3xl lg:hidden py-9 text-gray-900 dark:text-white font-bold'>
               <span className='underline decoration-slate-50 decoration-1 underline-offset-[1rem]'>CON</span>TACT
             </div>
@@ -68,25 +73,46 @@ const ContactPage = () => {
                 Get in touch with our team of experts and let's discuss how we can help
                 you achieve your goals.
               </p>
-              <a href="#contact-form">
-                <img src={Contact} alt="contact icon" className='lg:w-[8rem] w-[6rem] mt-2 inline cursor-pointer hover:scale-110 hover:shadow-lg hover:ring-2 hover:ring-blue-200 dark:hover:ring-blue-900 transition-all duration-200' />
-              </a>
+              <a
+                  href="#More"
+                  onClick={() => { 
+                    if (Ishidden === "hidden") {
+                      setHidden("block");
+                      setButtonText("contact with us latter");
+                      // Restore scrolling when content is revealed
+                      document.body.style.overflow = '';
+                      document.documentElement.style.overflow = '';
+                    } else {
+                      setHidden("hidden");
+                      setButtonText("Contact with us");
+                      // Hide scrolling when content is hidden
+                      document.body.style.overflow = 'hidden';
+                      document.documentElement.style.overflow = 'hidden';
+                    }
+                  }}
+                  className='mt-2 inline-flex items-center gap-3 cursor-pointer select-none px-4 py-2 rounded-lg uppercase tracking-wider font-semibold
+                             text-blueSiin underline decoration-blueSiin decoration-2 underline-offset-4
+                             transition-all duration-300 ease-out
+                             hover:-translate-y-0.5 hover:scale-105 hover:shadow-lg hover:bg-blueSiin/5 dark:hover:bg-blueSiin/10'
+                >
+                  <span>{buttonText}</span>
+                </a>
             </div>
           </div>
         </div>
 
         {/* Contact Form Section */}
-        <div id="contact-form" className="relative w-full mt-12 md:mt-16">
+        <div id="More" className={`${Ishidden} relative w-full mt-12 md:mt-16`}>
           <div className="relative flex flex-col lg:flex-row justify-around items-baseline">
             <div className="w-[90%] md:w-[35rem] pt-7">
               <h2 className="text-2xl md:text-3xl font-bold mb-4">Get In Touch</h2>
               <p className="text-gray-500 text-lg">Fill out the form below and we'll get back to you within 24 hours</p>
             </div>
-            <img
+            {/*<img
               src={Button}
               alt="button icon"
               className="relative top-6 w-[8rem] max-lg:left-[250px] lg:w-[14rem] hover:scale-110 hover:shadow-lg hover:ring-2 hover:ring-blue-200 dark:hover:ring-blue-900 transition-all duration-200"
-            />
+            />*/}
           </div>
 
           <img
@@ -104,8 +130,8 @@ const ContactPage = () => {
                   <h3 className="text-2xl font-bold mb-6 text-blueSiin">Contact Information</h3>
                   <div className="space-y-6">
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-blueSiin rounded-lg flex items-center justify-center flex-shrink-0">
-                        <span className="text-white text-xl">📍</span>
+                      <div className="flex items-center justify-center flex-shrink-0">
+                        <MdLocationOn className="text-2xl text-blueSiin dark:text-white" />
                       </div>
                       <div>
                         <h4 className="font-bold text-gray-800 dark:text-white mb-1">Address</h4>
@@ -118,8 +144,8 @@ const ContactPage = () => {
                     </div>
 
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-blueSiin rounded-lg flex items-center justify-center flex-shrink-0">
-                        <span className="text-white text-xl">📞</span>
+                      <div className="flex items-center justify-center flex-shrink-0">
+                        <MdPhone className="text-2xl text-blueSiin dark:text-white" />
                       </div>
                       <div>
                         <h4 className="font-bold text-gray-800 dark:text-white mb-1">Phone</h4>
@@ -128,8 +154,8 @@ const ContactPage = () => {
                     </div>
 
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-blueSiin rounded-lg flex items-center justify-center flex-shrink-0">
-                        <span className="text-white text-xl">✉️</span>
+                      <div className="flex items-center justify-center flex-shrink-0">
+                        <MdEmail className="text-2xl text-blueSiin dark:text-white" />
                       </div>
                       <div>
                         <h4 className="font-bold text-gray-800 dark:text-white mb-1">Email</h4>
@@ -138,8 +164,8 @@ const ContactPage = () => {
                     </div>
 
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-blueSiin rounded-lg flex items-center justify-center flex-shrink-0">
-                        <span className="text-white text-xl">🕒</span>
+                      <div className="flex items-center justify-center flex-shrink-0">
+                        <MdAccessTime className="text-2xl text-blueSiin dark:text-white" />
                       </div>
                       <div>
                         <h4 className="font-bold text-gray-800 dark:text-white mb-1">Business Hours</h4>
@@ -157,14 +183,14 @@ const ContactPage = () => {
                 <div>
                   <h4 className="font-bold text-gray-800 dark:text-white mb-4">Follow Us</h4>
                   <div className="flex space-x-4">
-                    <a href="#" className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-700 dark:hover:bg-blue-400 hover:scale-110 hover:shadow-lg transition-all duration-200">
-                      <span className="text-gray-700 dark:text-white text-sm font-bold">in</span>
+                    <a href="#" className="flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-200">
+                      <FaLinkedin className="text-2xl text-blueSiin dark:text-white hover:text-blue-700 dark:hover:text-blue-300" />
                     </a>
-                    <a href="#" className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-pink-600 dark:hover:bg-pink-400 hover:scale-110 hover:shadow-lg transition-all duration-200">
-                      <span className="text-gray-700 dark:text-white text-sm font-bold">ig</span>
+                    <a href="#" className="flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-200">
+                      <FaInstagram className="text-2xl text-blueSiin dark:text-white hover:text-pink-600 dark:hover:text-pink-400" />
                     </a>
-                    <a href="#" className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-900 dark:hover:bg-blue-400 hover:scale-110 hover:shadow-lg transition-all duration-200">
-                      <span className="text-gray-700 dark:text-white text-sm font-bold">x</span>
+                    <a href="#" className="flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-200">
+                      <FaTwitter className="text-2xl text-blueSiin dark:text-white hover:text-gray-900 dark:hover:text-blue-300" />
                     </a>
                   </div>
                 </div>

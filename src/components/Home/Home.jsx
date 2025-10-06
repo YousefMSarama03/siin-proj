@@ -30,13 +30,13 @@ function Home() {
 
                         <div className="flex flex-col justify-center items-center md:hidden h-[200px] py-8">
                             <ul className="flex space-x-3 text-sm" role="list" aria-label="Social media links">
-                                <li><a href="#" aria-label="Facebook" className="hover:text-blue-700 dark:hover:text-blue-400 hover:underline hover:scale-110 hover:shadow-lg transition-all duration-200 border-0">FB</a></li>
+                                <li><a href="#" aria-label="Facebook" className="hover:text-blueSiin transition-colors">FB</a></li>
                                 <img src={Ellipse} alt="" role="presentation" />
-                                <li><a href="#" aria-label="LinkedIn" className="hover:text-blue-700 dark:hover:text-blue-400 hover:underline hover:scale-110 hover:shadow-lg transition-all duration-200 border-0">IN</a></li>
+                                <li><a href="#" aria-label="LinkedIn" className="hover:text-blueSiin transition-colors">IN</a></li>
                                 <img src={Ellipse} alt="" role="presentation" />
-                                <li><a href="#" aria-label="Dribbble" className="hover:text-blue-700 dark:hover:text-blue-400 hover:underline hover:scale-110 hover:shadow-lg transition-all duration-200 border-0">DR</a></li>
+                                <li><a href="#" aria-label="Dribbble" className="hover:text-blueSiin transition-colors">DR</a></li>
                                 <img src={Ellipse} alt="" role="presentation" />
-                                <li><a href="#" aria-label="Behance" className="hover:text-blue-700 dark:hover:text-blue-400 hover:underline hover:scale-110 hover:shadow-lg transition-all duration-200 border-0">BE</a></li>
+                                <li><a href="#" aria-label="Behance" className="hover:text-blueSiin transition-colors">BE</a></li>
                             </ul>
                         </div>
                     </main>

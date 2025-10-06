@@ -44,12 +44,14 @@ const App = () => {
                 </Routes>
               </Suspense>
 
-              {/* Floating Video Icon */}
+              {/* 
+              Floating Video Icon
               <img
                 src={Video}
                 alt="Video Icon"
                 className="fixed right-9 bottom-5 hover:scale-105 transition-transform w-16 lg:w-26"
               />
+              */}
             </>
           )}
         </div>
