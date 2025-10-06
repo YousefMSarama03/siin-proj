@@ -36,6 +36,9 @@ const About = () => {
     const previousBodyOverflow = document.body.style.overflow;
     const previousHtmlOverflow = document.documentElement.style.overflow;
 
+    // Reset scroll position to top
+    window.scrollTo(0, 0);
+    
     document.body.style.overflow = 'hidden';
     document.documentElement.style.overflow = 'hidden';
 
@@ -87,6 +90,8 @@ const About = () => {
                       // Hide scrolling when content is hidden
                       document.body.style.overflow = 'hidden';
                       document.documentElement.style.overflow = 'hidden';
+                      // Scroll to top when hiding content
+                      window.scrollTo(0, 0);
                     }
                   }}
                   className='mt-2 inline-flex items-center gap-3 cursor-pointer select-none px-4 py-2 rounded-lg uppercase tracking-wider font-semibold
@@ -130,7 +135,7 @@ const About = () => {
             </div>
 
 
-            <div className='w-full h-auto md:mt-[150px] mt-[65px] mb-24 md:mb-32'>
+            <div className='w-full h-auto md:mt-[150px] mt-[65px]'>
               <div className='text-center items-center mb-12'>
                 <h1 className='lg:text-[48px] text-[25px] uppercase font-bold text-gray-900 dark:text-white'><span className='blueSiin '>Our</span> Team Members</h1>
                 <p className='text-sm md:text-[18px] text-balance uppercase leading-[40px] lg:px-72 pt-4 text-gray-700 dark:text-gray-300'>Partnering with SIIN offers a multitude of advantages. Experience increased brand visibility, improved customer engagement, and higher ROI. Our tailored solutions are designed to meet your unique business needs, ensuring lasting success.</p>
@@ -140,7 +145,7 @@ const About = () => {
                 <Info employees={employees} />
               </div>
 
-              <div className='flex flex-col xl:px-[10rem] max-md:mt-[64px]  '>
+              <div className='flex flex-col xl:px-[10rem] max-md:mt-[32px]'>
                 <div className='flex flex-col  items-center'>
                   <h1 className='lg:text-[3rem] text-[2rem] capitalize font-bold pb-4 flex text-gray-900 dark:text-white'><span className='blueSiin'>Our </span>&nbsp; Achievements</h1>
                   <p className='text-[18px] font-light text-center leading-[35px] uppercase px-2 text-gray-700 dark:text-gray-300'>Witness the brilliance of our previous projects. Our portfolio showcases the successful collaborations we've had with diverse clients across various industries. Let our work speak for itself.</p>
@@ -171,11 +176,12 @@ const About = () => {
                   </div>
                 </div>
 
-                
-                <Footer />
               </div>
             </div>
           </div>
+        </div>
+        <div className="mt-16 lg:px-[160px]">
+          <Footer />
         </div>
 
       </section>

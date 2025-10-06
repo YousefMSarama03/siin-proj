@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdLocationOn, MdPhone, MdEmail, MdAccessTime } from 'react-icons/md';
 import { FaLinkedin, FaInstagram, FaTwitter } from 'react-icons/fa';
 import Tag from "../../assets/homeAssests/Tag.svg";
@@ -11,6 +11,22 @@ import Footer from "../Footer/Footer";
 const ContactPage = () => {
   const [Ishidden, setHidden] = useState("hidden");
   const [buttonText, setButtonText] = useState("Contact with us");
+
+  useEffect(() => {
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+
+    // Reset scroll position to top
+    window.scrollTo(0, 0);
+    
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+    };
+  }, []);
   
   const [formData, setFormData] = useState({
     name: '',
@@ -88,6 +104,8 @@ const ContactPage = () => {
                       // Hide scrolling when content is hidden
                       document.body.style.overflow = 'hidden';
                       document.documentElement.style.overflow = 'hidden';
+                      // Scroll to top when hiding content
+                      window.scrollTo(0, 0);
                     }
                   }}
                   className='mt-2 inline-flex items-center gap-3 cursor-pointer select-none px-4 py-2 rounded-lg uppercase tracking-wider font-semibold

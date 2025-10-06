@@ -13,13 +13,13 @@ const Footer = () => {
         <div className='py-[120px] h-auto'>
           <div className='lg:px-[160px]'>
             <div className='flex flex-col justify-center items-center gap-5 text-center'>
-              <h1 className='lg:text-[48px] text-[22px] capitalize font-bold'>Ready to Transform Your Digital Presence?</h1>
-              <p className='text-center lg:text-[18px] text-[11px] text-[#8C8C8C] capitalize'>
+              <h1 className='lg:text-[48px] text-[22px] capitalize font-bold text-gray-900 dark:text-white'>Ready to Transform Your Digital Presence?</h1>
+              <p className='text-center lg:text-[18px] text-[11px] text-gray-600 dark:text-gray-300 capitalize'>
                 Take the first step towards digital success with SIIN by your side. Our team of experts is eager to craft tailored solutions that drive growth for your business. Whether you need a stunning website, a powerful mobile app, or a data-driven marketing campaign, we've got you covered. Let's embark on this transformative journey together.
               </p>
             </div>
             <div className='flex flex-col justify-center items-center py-6 gap-[20px]'>
-              <h1 className='lg:text-[20px] text-[12px]'>Unlock Your Digital Potential Today</h1>
+              <h1 className='lg:text-[20px] text-[12px] text-gray-900 dark:text-white'>Unlock Your Digital Potential Today</h1>
               <div className='flex gap-[10px]'>
                 <button className="bg-blueSiin text-white lg:px-8 lg:py-4 px-3 py-1.5 text-xs rounded-full transition-all duration-200 hover:bg-blue-700 dark:hover:bg-blue-400 hover:scale-105 hover:shadow-lg capitalize shadow-md border-0" aria-label="Get started with SIIN services">
                   Get started
@@ -38,7 +38,7 @@ const Footer = () => {
             <div className='flex flex-row justify-between items-center mb-12'>
               <img src={icon} alt="icon" className='lg:w-[9rem] w-[6rem]' />
               <div className='flex flex-row justify-center items-center gap-5'>
-                <h1 className='capitalize lg:text-[18px] text-[9px]'>Follow Us On Social Media</h1>
+                <h1 className='capitalize lg:text-[18px] text-[9px] text-gray-900 dark:text-white'>Follow Us On Social Media</h1>
                 <div className="hidden md:flex">
                   <ul className="flex space-x-3 text-sm" role="list" aria-label="Social media links">
                     <li><a href="#" aria-label="Facebook" className="hover:text-blueSiin transition-colors">FB</a></li>

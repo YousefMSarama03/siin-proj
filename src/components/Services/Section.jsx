@@ -1,5 +1,5 @@
 
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import Tag from "../../assets/homeAssests/Tag.svg";
 import N from "../../assets/homeAssests/N.svg";
 import Contact from "../../assets/homeAssests/contact.svg";
@@ -10,6 +10,22 @@ import Footer from "../Footer/Footer";
 const Services = () => {
   const [Ishidden, setHidden] = useState("hidden");
   const [buttonText, setButtonText] = useState("Explore Siin's services");
+
+  useEffect(() => {
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+
+    // Reset scroll position to top
+    window.scrollTo(0, 0);
+    
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+    };
+  }, []);
 
   // Memoize services data to prevent unnecessary re-renders
   const services = useMemo(() => [
@@ -52,8 +68,8 @@ const Services = () => {
         <div className="flex flex-col lg:flex-row w-full">
           <div className="relative hidden w-full lg:w-[35%] h-auto md:h-[780px] lg:flex items-center justify-start pt-10 md:pt-28">
             <img src={Tag} alt="Tag" className='w-[3rem] relative z-50 left-[55px] bottom-14 h-auto md:w-[3rem] md:h-[35rem]' />
-            <h1 className="text-2xl md:text-4xl relative left-[11rem] bottom-[19rem] mt-4 text-white">
-              <span className='underline decoration-gray-500/60 decoration-2 underline-offset-[1rem]'>SE</span>RVICES
+            <h1 className="text-2xl md:text-4xl relative left-[11rem] bottom-[19rem] mt-4 font-bold text-gray-900 dark:text-white">
+              <span className='underline decoration-gray-500/60 dark:decoration-gray-500/60 light:decoration-gray-300/60 decoration-2 underline-offset-[1rem]'>SE</span>RVICES
             </h1>
             <img src={N} alt="N image" className='absolute w-[30rem] mt-24 top-24 right-4 md:top-28 md:right-auto' />
           </div>
@@ -82,13 +98,15 @@ const Services = () => {
                     // Restore scrolling when content is revealed
                     document.body.style.overflow = '';
                     document.documentElement.style.overflow = '';
-                  } else {
-                    setHidden("hidden");
-                    setButtonText("Explore Siin's services");
-                    // Hide scrolling when content is hidden
-                    document.body.style.overflow = 'hidden';
-                    document.documentElement.style.overflow = 'hidden';
-                  }
+                    } else {
+                      setHidden("hidden");
+                      setButtonText("Explore Siin's services");
+                      // Hide scrolling when content is hidden
+                      document.body.style.overflow = 'hidden';
+                      document.documentElement.style.overflow = 'hidden';
+                      // Scroll to top when hiding content
+                      window.scrollTo(0, 0);
+                    }
                 }}
                 className='mt-2 inline-flex items-center gap-3 cursor-pointer select-none px-4 py-2 rounded-lg uppercase tracking-wider font-semibold
                              text-blueSiin underline decoration-blueSiin decoration-2 underline-offset-4
