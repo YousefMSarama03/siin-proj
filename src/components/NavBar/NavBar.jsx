@@ -132,7 +132,7 @@ const NavBar = () => {
                 </nav>
 
                 {/* Light/Dark Mode Toggle */}
-                <div className="h-[60px] w-full flex justify-center items-center p-4 mb-2">
+                <div className="h-[60px] w-full flex justify-center items-center p-4 mb-12">
                     <div className="flex justify-center bg-gray-100 dark:bg-[#232323] rounded-xl w-full max-w-xs shadow-sm">
                         <button
                             onClick={toggleTheme}
