@@ -39,50 +39,89 @@ const NavBar = () => {
 
     return (
         <>
-            {/* Navbar */}
-            <nav className="w-full z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md text-black dark:text-white fixed border-b border-gray-200/50 dark:border-gray-800/50 transition-colors duration-300 shadow-sm" role="navigation" aria-label="Main navigation">
-                <div className="px-4 md:px-7 lg:px-[102px] flex items-center justify-between h-20">
-                    {/* Left Social Icons */}
-                    <div className="hidden md:flex">
-                        <ul className="flex space-x-3 text-sm" role="list" aria-label="Social media links">
-                            <li><a href="#" aria-label="Facebook" className="hover:text-blueSiin transition-colors">FB</a></li>
-                            <img src={Ellipse} alt="" role="presentation" />
-                            <li><a href="#" aria-label="LinkedIn" className="hover:text-blueSiin transition-colors">IN</a></li>
-                            <img src={Ellipse} alt="" role="presentation" />
-                            <li><a href="#" aria-label="Dribbble" className="hover:text-blueSiin transition-colors">DR</a></li>
-                            <img src={Ellipse} alt="" role="presentation" />
-                            <li><a href="#" aria-label="Behance" className="hover:text-blueSiin transition-colors">BE</a></li>
-                        </ul>
-                    </div>
+            {/* Modern Navbar */}
+            <nav className="w-full z-50 bg-white/90 dark:bg-black/90 backdrop-blur-xl text-black dark:text-white fixed border-b border-gray-200/30 dark:border-gray-700/30 transition-all duration-300 shadow-lg" role="navigation" aria-label="Main navigation">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex items-center justify-between h-16 sm:h-20">
+                        {/* Left Section - Social Icons (Desktop Only) */}
+                        <div className="hidden lg:flex items-center space-x-4">
+                            <div className="flex items-center space-x-2">
+                                <a href="https://www.facebook.com/share/1JsYUEWWVw/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold hover:bg-blue-700 transition-colors duration-300 hover:scale-110">
+                                    FB
+                                </a>
+                                <a href="https://www.instagram.com/siin.dev?igsh=MnJ4Nm51Ym4zY3hv" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white text-xs font-bold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 hover:scale-110">
+                                    IN
+                                </a>
+                            </div>
+                            <div className="h-4 w-px bg-gray-300 dark:bg-gray-600"></div>
+                            <span className="text-xs text-gray-500 dark:text-gray-400 font-medium">Follow Us</span>
+                        </div>
 
-                    {/* Logo */}
-                    <Link
-                        to="/"
-                        className="opacity-100 transition-opacity hover:opacity-70"
-                    >
-                        <img
-                            src={siin}
-                            alt="Siin Logo"
-                            className="h-[26.5] w-[80px] md:w-[94px] lg:w-[119px] cursor-pointer"
-                        />
-                    </Link>
+                        {/* Center Section - Logo */}
+                        <div className="flex-1 flex justify-center lg:justify-start">
+                            <Link
+                                to="/"
+                                className="flex items-center space-x-2 group"
+                            >
+                                <img
+                                    src={siin}
+                                    alt="Siin Logo"
+                                    className="h-8 w-auto sm:h-10 lg:h-12 transition-transform duration-300 group-hover:scale-105"
+                                />
+                            </Link>
+                        </div>
 
-                    {/* Right Icons */}
-                    <div className="flex items-center md:flex xl:gap-10 md:gap-5">
-                        <button aria-label="Search" className="cursor-pointer hover:opacity-70 transition-opacity">
-                            {/* <SearchIcon className="w-6 h-6 text-black dark:text-white transition-colors" /> */}
-                        </button>
-                        <img src={Hr} alt="" role="presentation" className={`w-[3px] ${isOpened ? "invisible" : "md:flex"}`} />
+                        {/* Right Section - Theme Toggle & Menu */}
+                        <div className="flex items-center space-x-3 sm:space-x-4">
+                            {/* Theme Toggle (Desktop) */}
+                            <div className="hidden sm:flex items-center bg-gray-100 dark:bg-gray-800 rounded-full p-1">
+                                <button
+                                    onClick={toggleTheme}
+                                    className={`flex items-center justify-center w-8 h-8 rounded-full transition-all duration-300 ${
+                                        !isDarkMode 
+                                            ? 'bg-white shadow-md text-gray-900' 
+                                            : 'text-gray-400 hover:text-gray-300'
+                                    }`}
+                                    aria-label="Light mode"
+                                >
+                                    <img src={light} alt="light" width="16px" />
+                                </button>
+                                <button
+                                    onClick={toggleTheme}
+                                    className={`flex items-center justify-center w-8 h-8 rounded-full transition-all duration-300 ${
+                                        isDarkMode 
+                                            ? 'bg-gray-700 shadow-md text-white' 
+                                            : 'text-gray-400 hover:text-gray-300'
+                                    }`}
+                                    aria-label="Dark mode"
+                                >
+                                    <img src={moon} alt="moon" width="16px" />
+                                </button>
+                            </div>
 
-                        {/* Burger Menu Button */}
-                        <button 
-                            className="inline-flex items-center cursor-pointer px-3 rounded-lg hover:opacity-70 transition-opacity" 
-                            onClick={() => setOpen(!isOpened)}
-                            aria-label={isOpened ? "Close menu" : "Open menu"}
-                            aria-expanded={isOpened}
-                        >
-                            <img src={isDarkMode ? Burger : BurgerBlack} alt="menu" />
-                        </button>
+                            {/* Mobile Theme Toggle */}
+                            <button
+                                onClick={toggleTheme}
+                                className="sm:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
+                                aria-label="Toggle theme"
+                            >
+                                <img src={isDarkMode ? light : moon} alt="theme toggle" width="20px" />
+                            </button>
+
+                            {/* Menu Button */}
+                            <button 
+                                className="relative inline-flex items-center justify-center p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-105" 
+                                onClick={() => setOpen(!isOpened)}
+                                aria-label={isOpened ? "Close menu" : "Open menu"}
+                                aria-expanded={isOpened}
+                            >
+                                <div className="w-6 h-6 flex flex-col justify-center items-center">
+                                    <span className={`block w-5 h-0.5 bg-current transition-all duration-300 ${isOpened ? 'rotate-45 translate-y-1' : ''}`}></span>
+                                    <span className={`block w-5 h-0.5 bg-current mt-1 transition-all duration-300 ${isOpened ? 'opacity-0' : ''}`}></span>
+                                    <span className={`block w-5 h-0.5 bg-current mt-1 transition-all duration-300 ${isOpened ? '-rotate-45 -translate-y-1' : ''}`}></span>
+                                </div>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -93,71 +132,97 @@ const NavBar = () => {
                 onClick={() => setOpen(false)}
             />
 
-            {/* Sidebar Menu */}
+            {/* Modern Sidebar Menu */}
             <div 
-                className={`fixed top-0 right-0 flex flex-col justify-between h-screen w-80 sm:w-80 backdrop-blur-xl transition-transform duration-300 z-[100] ${isOpened ? "translate-x-0 bg-white/95 dark:bg-[#18181b]/95 shadow-2xl" : "translate-x-full"}`}
+                className={`fixed top-0 right-0 flex flex-col h-screen w-80 sm:w-96 backdrop-blur-2xl transition-transform duration-300 z-[100] ${isOpened ? "translate-x-0 bg-white dark:bg-black shadow-2xl border-l border-gray-200/20 dark:border-gray-700/20" : "translate-x-full"}`}
                 role="dialog"
                 aria-modal="true"
                 aria-label="Navigation menu"
             >
-                {/* Close Button */}
-                <div className="flex h-[112px] border-b border-gray-200 dark:border-gray-700 items-center px-6">
+                {/* Header */}
+                <div className="flex items-center justify-between p-6 border-b border-gray-200/20 dark:border-gray-700/20">
+                    <h2 className="text-xl font-bold text-gray-900 dark:text-white">Menu</h2>
                     <button 
-                        className="relative left-14 cursor-pointer hover:opacity-70 transition-opacity" 
+                        className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300" 
                         onClick={() => setOpen(false)}
                         aria-label="Close menu"
                     >
-                        <img src={isDarkMode ? Burger : BurgerBlack} alt="menu" width="85px" />
+                        <div className="w-6 h-6 flex flex-col justify-center items-center">
+                            <span className="block w-5 h-0.5 bg-current rotate-45"></span>
+                            <span className="block w-5 h-0.5 bg-current -rotate-45 -translate-y-0.5"></span>
+                        </div>
                     </button>
                 </div>
 
                 {/* Navigation Links */}
-                <nav className="flex flex-col space-y-8 text-black dark:text-white items-left pl-8 relative bottom-20" role="navigation" aria-label="Main menu">
-                    {[
-                        { name: "Home", path: "/" },
-                        { name: "About", path: "/about" },
-                        { name: "Services", path: "/services" },
-                        { name: "Contact", path: "/contact" }
-                    ].map((item) => (
-                        <Link
-                            key={item.path}
-                            to={item.path}
-                            onClick={() => setOpen(false)}
-                            className={`cursor-pointer duration-300 px-4 py-3 rounded-lg transition-all text-lg font-semibold ${activeLink === item.path ? "text-blueSiin font-bold bg-blueSiin/10 dark:bg-blueSiin/20 scale-105" : "hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blueSiin hover:scale-105"}`}
-                            aria-current={activeLink === item.path ? "page" : undefined}
-                        >
-                            {item.name}
-                        </Link>
-                    ))}
+                <nav className="flex-1 px-6 py-8" role="navigation" aria-label="Main menu">
+                    <div className="space-y-2">
+                        {[
+                            { name: "Home", path: "/" },
+                            { name: "About", path: "/about" },
+                            { name: "Services", path: "/services" },
+                            { name: "Contact", path: "/contact" }
+                        ].map((item) => (
+                            <Link
+                                key={item.path}
+                                to={item.path}
+                                onClick={() => setOpen(false)}
+                                className={`flex items-center px-4 py-3 rounded-xl transition-all duration-300 text-lg font-medium ${
+                                    activeLink === item.path 
+                                        ? "text-blueSiin bg-blueSiin/10 dark:bg-blueSiin/20 shadow-md scale-105" 
+                                        : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blueSiin hover:scale-105"
+                                }`}
+                                aria-current={activeLink === item.path ? "page" : undefined}
+                            >
+                                <span>{item.name}</span>
+                            </Link>
+                        ))}
+                    </div>
 
-                    {/* Light/Dark Mode Toggle - Now under the links */}
-                    <div className="w-full flex justify-center items-center p-2 mt-8">
-                        <div className="flex justify-center bg-gray-100 dark:bg-[#232323] rounded-xl w-full max-w-[280px] shadow-sm">
+                    {/* Theme Toggle */}
+                    <div className="mt-8 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl">
+                        <h3 className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">Theme</h3>
+                        <div className="flex bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
                             <button
                                 onClick={toggleTheme}
-                                className={`flex px-2 py-2 w-1/2 gap-1 justify-center rounded-lg transition-all duration-300 font-semibold text-xs sm:text-sm
-                                    ${!isDarkMode ? 'bg-blueSiin text-white shadow' : 'text-gray-500 hover:text-blueSiin'}
-                                `}
+                                className={`flex-1 flex items-center justify-center space-x-2 py-2 px-3 rounded-md transition-all duration-300 text-sm font-medium ${
+                                    !isDarkMode 
+                                        ? 'bg-white shadow-sm text-gray-900' 
+                                        : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
+                                }`}
                                 aria-pressed={!isDarkMode}
                             >
-                                <img src={light} alt="light" width="14px" className="sm:w-4" />
-                                <span className="hidden sm:inline">Light</span>
-                                <span className="sm:hidden">L</span>
+                                <img src={light} alt="light" width="16px" />
+                                <span>Light</span>
                             </button>
                             <button
                                 onClick={toggleTheme}
-                                className={`flex px-2 py-2 w-1/2 gap-1 justify-center rounded-lg transition-all duration-300 font-semibold text-xs sm:text-sm
-                                    ${isDarkMode ? 'bg-blueSiin text-white shadow' : 'text-gray-500 hover:text-blueSiin'}
-                                `}
+                                className={`flex-1 flex items-center justify-center space-x-2 py-2 px-3 rounded-md transition-all duration-300 text-sm font-medium ${
+                                    isDarkMode 
+                                        ? 'bg-gray-600 shadow-sm text-white' 
+                                        : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
+                                }`}
                                 aria-pressed={isDarkMode}
                             >
-                                <img src={moon} alt="moon" width="14px" className="sm:w-4" />
-                                <span className="hidden sm:inline">Dark</span>
-                                <span className="sm:hidden">D</span>
+                                <img src={moon} alt="moon" width="16px" />
+                                <span>Dark</span>
                             </button>
                         </div>
                     </div>
                 </nav>
+
+                {/* Footer */}
+                <div className="p-6 border-t border-gray-200/20 dark:border-gray-700/20">
+                    <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+                            S
+                        </div>
+                        <div>
+                            <p className="text-sm font-semibold text-gray-900 dark:text-white">SIIN</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">Digital Solutions</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     );
