@@ -95,7 +95,7 @@ const NavBar = () => {
 
             {/* Sidebar Menu */}
             <div 
-                className={`fixed top-0 right-0 flex flex-col justify-between h-screen w-80 backdrop-blur-xl transition-transform duration-300 z-[100] ${isOpened ? "translate-x-0 bg-white/95 dark:bg-[#18181b]/95 shadow-2xl" : "translate-x-full"}`}
+                className={`fixed top-0 right-0 flex flex-col justify-between h-screen w-80 sm:w-80 backdrop-blur-xl transition-transform duration-300 z-[100] ${isOpened ? "translate-x-0 bg-white/95 dark:bg-[#18181b]/95 shadow-2xl" : "translate-x-full"}`}
                 role="dialog"
                 aria-modal="true"
                 aria-label="Navigation menu"
@@ -132,27 +132,29 @@ const NavBar = () => {
                 </nav>
 
                 {/* Light/Dark Mode Toggle */}
-                <div className="h-[60px] w-full flex justify-center items-center p-4 mb-12">
-                    <div className="flex justify-center bg-gray-100 dark:bg-[#232323] rounded-xl w-full max-w-xs shadow-sm">
+                <div className="h-[80px] w-full flex justify-center items-center p-2 mb-4">
+                    <div className="flex justify-center bg-gray-100 dark:bg-[#232323] rounded-xl w-full max-w-[280px] shadow-sm">
                         <button
                             onClick={toggleTheme}
-                            className={`flex px-3 py-2 w-1/2 gap-2 justify-center rounded-lg transition-all duration-300 font-semibold text-sm
+                            className={`flex px-2 py-2 w-1/2 gap-1 justify-center rounded-lg transition-all duration-300 font-semibold text-xs sm:text-sm
                                 ${!isDarkMode ? 'bg-blueSiin text-white shadow' : 'text-gray-500 hover:text-blueSiin'}
                             `}
                             aria-pressed={!isDarkMode}
                         >
-                            <img src={light} alt="light" width="16px" />
-                            <span>Light</span>
+                            <img src={light} alt="light" width="14px" className="sm:w-4" />
+                            <span className="hidden sm:inline">Light</span>
+                            <span className="sm:hidden">L</span>
                         </button>
                         <button
                             onClick={toggleTheme}
-                            className={`flex px-3 py-2 w-1/2 gap-1 justify-center rounded-lg transition-all duration-300 font-semibold text-sm
+                            className={`flex px-2 py-2 w-1/2 gap-1 justify-center rounded-lg transition-all duration-300 font-semibold text-xs sm:text-sm
                                 ${isDarkMode ? 'bg-blueSiin text-white shadow' : 'text-gray-500 hover:text-blueSiin'}
                             `}
                             aria-pressed={isDarkMode}
                         >
-                            <img src={moon} alt="moon" />
-                            <span>Dark</span>
+                            <img src={moon} alt="moon" width="14px" className="sm:w-4" />
+                            <span className="hidden sm:inline">Dark</span>
+                            <span className="sm:hidden">D</span>
                         </button>
                     </div>
                 </div>

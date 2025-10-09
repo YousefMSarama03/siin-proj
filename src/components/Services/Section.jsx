@@ -133,11 +133,7 @@ const Services = () => {
             />
           </div>
 
-          <img
-            src={Line}
-            alt="Line"
-            className="absolute -z-50 top-36 left-[195px] w-[90%] hidden lg:flex lg:w-[1200px]"
-          />
+          
 
           {/* Services Cards */}
           <div className="lg:px-[190px] mt-16">

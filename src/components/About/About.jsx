@@ -116,11 +116,7 @@ const About = () => {
                 className="relative top-6 w-[8rem] max-lg:left-[250px] lg:w-[14rem] hover:scale-110 hover:shadow-lg hover:ring-2 hover:ring-blue-200 dark:hover:ring-blue-900 transition-all duration-200 border-0"
               />*/}
             </div>
-            <img
-              src={Line}
-              alt="Line"
-              className=" absolute -z-50 top-36 left-[195px] w-[90%] hidden lg:flex lg:w-[1200px]  "
-            />
+           
             <div className="lg:px-[190px]">
               <p className="text-sm md:text-[18px] md:text-start pt-10 leading-[40px] uppercase text-justify text-gray-700 dark:text-gray-300">
                 Welcome to SIIN, your trusted partner in the dynamic world of
