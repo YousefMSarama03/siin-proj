@@ -44,18 +44,7 @@ const NavBar = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16 sm:h-20">
                         {/* Left Section - Social Icons (Desktop Only) */}
-                        <div className="hidden lg:flex items-center space-x-4">
-                            <div className="flex items-center space-x-2">
-                                <a href="https://www.facebook.com/share/1JsYUEWWVw/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold hover:bg-blue-700 transition-colors duration-300 hover:scale-110">
-                                    FB
-                                </a>
-                                <a href="https://www.instagram.com/siin.dev?igsh=MnJ4Nm51Ym4zY3hv" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white text-xs font-bold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 hover:scale-110">
-                                    IN
-                                </a>
-                            </div>
-                            <div className="h-4 w-px bg-gray-300 dark:bg-gray-600"></div>
-                            <span className="text-xs text-gray-500 dark:text-gray-400 font-medium">Follow Us</span>
-                        </div>
+                       
 
                         {/* Center Section - Logo */}
                         <div className="flex-1 flex justify-center lg:justify-start">
