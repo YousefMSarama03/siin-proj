@@ -129,35 +129,35 @@ const NavBar = () => {
                             {item.name}
                         </Link>
                     ))}
-                </nav>
 
-                {/* Light/Dark Mode Toggle */}
-                <div className="h-[80px] w-full flex justify-center items-center p-2 mb-4">
-                    <div className="flex justify-center bg-gray-100 dark:bg-[#232323] rounded-xl w-full max-w-[280px] shadow-sm">
-                        <button
-                            onClick={toggleTheme}
-                            className={`flex px-2 py-2 w-1/2 gap-1 justify-center rounded-lg transition-all duration-300 font-semibold text-xs sm:text-sm
-                                ${!isDarkMode ? 'bg-blueSiin text-white shadow' : 'text-gray-500 hover:text-blueSiin'}
-                            `}
-                            aria-pressed={!isDarkMode}
-                        >
-                            <img src={light} alt="light" width="14px" className="sm:w-4" />
-                            <span className="hidden sm:inline">Light</span>
-                            <span className="sm:hidden">L</span>
-                        </button>
-                        <button
-                            onClick={toggleTheme}
-                            className={`flex px-2 py-2 w-1/2 gap-1 justify-center rounded-lg transition-all duration-300 font-semibold text-xs sm:text-sm
-                                ${isDarkMode ? 'bg-blueSiin text-white shadow' : 'text-gray-500 hover:text-blueSiin'}
-                            `}
-                            aria-pressed={isDarkMode}
-                        >
-                            <img src={moon} alt="moon" width="14px" className="sm:w-4" />
-                            <span className="hidden sm:inline">Dark</span>
-                            <span className="sm:hidden">D</span>
-                        </button>
+                    {/* Light/Dark Mode Toggle - Now under the links */}
+                    <div className="w-full flex justify-center items-center p-2 mt-8">
+                        <div className="flex justify-center bg-gray-100 dark:bg-[#232323] rounded-xl w-full max-w-[280px] shadow-sm">
+                            <button
+                                onClick={toggleTheme}
+                                className={`flex px-2 py-2 w-1/2 gap-1 justify-center rounded-lg transition-all duration-300 font-semibold text-xs sm:text-sm
+                                    ${!isDarkMode ? 'bg-blueSiin text-white shadow' : 'text-gray-500 hover:text-blueSiin'}
+                                `}
+                                aria-pressed={!isDarkMode}
+                            >
+                                <img src={light} alt="light" width="14px" className="sm:w-4" />
+                                <span className="hidden sm:inline">Light</span>
+                                <span className="sm:hidden">L</span>
+                            </button>
+                            <button
+                                onClick={toggleTheme}
+                                className={`flex px-2 py-2 w-1/2 gap-1 justify-center rounded-lg transition-all duration-300 font-semibold text-xs sm:text-sm
+                                    ${isDarkMode ? 'bg-blueSiin text-white shadow' : 'text-gray-500 hover:text-blueSiin'}
+                                `}
+                                aria-pressed={isDarkMode}
+                            >
+                                <img src={moon} alt="moon" width="14px" className="sm:w-4" />
+                                <span className="hidden sm:inline">Dark</span>
+                                <span className="sm:hidden">D</span>
+                            </button>
+                        </div>
                     </div>
-                </div>
+                </nav>
             </div>
         </>
     );
