@@ -1,5 +1,5 @@
 import React from 'react';
-import icon from "../../assets/homeAssests/icon.svg";
+import icon from "../../assets/NavAssests/siin.svg";
 import ground from "../../assets/homeAssests/ground.png";
 import linkedin from "../About/Card/linkedin.svg";
 import insta from "../About/Card/insta.svg";
@@ -41,13 +41,13 @@ const Footer = () => {
                 <h1 className='capitalize lg:text-[18px] text-[9px] text-gray-900 dark:text-white'>Follow Us On Social Media</h1>
                 <div className="hidden md:flex">
                   <ul className="flex space-x-3 text-sm" role="list" aria-label="Social media links">
-                    <li><a href="#" aria-label="Facebook" className="hover:text-blueSiin transition-colors">FB</a></li>
+                    <li><a href="https://www.facebook.com/share/1JsYUEWWVw/" aria-label="Facebook" className="hover:text-blueSiin transition-colors">FB</a></li>
                     <img src={Ellipse} alt="" role="presentation" />
-                    <li><a href="#" aria-label="LinkedIn" className="hover:text-blueSiin transition-colors">IN</a></li>
-                    <img src={Ellipse} alt="" role="presentation" />
+                    <li><a href="https://www.instagram.com/siin.dev?igsh=MnJ4Nm51Ym4zY3hv" aria-label="instagram" className="hover:text-blueSiin transition-colors">IN</a></li>
+                    {/*<img src={Ellipse} alt="" role="presentation" />
                     <li><a href="#" aria-label="Dribbble" className="hover:text-blueSiin transition-colors">DR</a></li>
                     <img src={Ellipse} alt="" role="presentation" />
-                    <li><a href="#" aria-label="Behance" className="hover:text-blueSiin transition-colors">BE</a></li>
+                    <li><a href="#" aria-label="Behance" className="hover:text-blueSiin transition-colors">BE</a></li>*/}
                   </ul>
                 </div>
               </div>

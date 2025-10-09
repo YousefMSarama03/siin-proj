@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { MdLocationOn, MdPhone, MdEmail, MdAccessTime } from 'react-icons/md';
 import { FaLinkedin, FaInstagram, FaTwitter } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 import Tag from "../../assets/homeAssests/Tag.svg";
 import N from "../../assets/homeAssests/N.svg";
-import Contact from "../../assets/homeAssests/contact.svg";
+import ContactIcon from "../../assets/homeAssests/contact.svg";
 import Button from "../../assets/homeAssests/Button.svg";
 import Line from "../../assets/homeAssests/Line.svg";
+import Ellipse from "../../assets/NavAssests/Ellipse.svg";
 import Footer from "../Footer/Footer";
 
 const ContactPage = () => {
   const [Ishidden, setHidden] = useState("hidden");
   const [buttonText, setButtonText] = useState("Contact with us");
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
 
   useEffect(() => {
     const previousBodyOverflow = document.body.style.overflow;
@@ -18,7 +22,7 @@ const ContactPage = () => {
 
     // Reset scroll position to top
     window.scrollTo(0, 0);
-    
+
     document.body.style.overflow = 'hidden';
     document.documentElement.style.overflow = 'hidden';
 
@@ -27,7 +31,7 @@ const ContactPage = () => {
       document.documentElement.style.overflow = previousHtmlOverflow;
     };
   }, []);
-  
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -45,10 +49,65 @@ const ContactPage = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    setIsLoading(true);
+    setSubmitStatus(null);
+
+    try {
+      // Option 1: EmailJS (requires setup)
+      // Uncomment and configure these values after setting up EmailJS
+      /*
+      const serviceId = 'service_xxxxxxxxx'; // Your EmailJS service ID
+      const templateId = 'template_xxxxxxxxx'; // Your EmailJS template ID
+      const publicKey = 'xxxxxxxxxxxxxxxx'; // Your EmailJS public key
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        company: formData.company,
+        phone: formData.phone,
+        service: formData.service,
+        message: formData.message,
+        to_email: 'siin.net.co@gmail.com'
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      */
+
+      // Option 2: Simple form submission (for testing)
+      // This will show success message but won't actually send email
+      // Replace this with EmailJS code above once configured
+      await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate API call
+      
+      setSubmitStatus('success');
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        phone: '',
+        service: '',
+        message: ''
+      });
+
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus(null);
+      }, 5000);
+
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setSubmitStatus('error');
+      
+      // Hide error message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus(null);
+      }, 5000);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const services = [
@@ -61,7 +120,7 @@ const ContactPage = () => {
   ];
 
   return (
-  <section className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
+    <section className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
       <div className='max-lg:px-4'>
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row w-full">
@@ -90,31 +149,31 @@ const ContactPage = () => {
                 you achieve your goals.
               </p>
               <a
-                  href="#More"
-                  onClick={() => { 
-                    if (Ishidden === "hidden") {
-                      setHidden("block");
-                      setButtonText("contact with us latter");
-                      // Restore scrolling when content is revealed
-                      document.body.style.overflow = '';
-                      document.documentElement.style.overflow = '';
-                    } else {
-                      setHidden("hidden");
-                      setButtonText("Contact with us");
-                      // Hide scrolling when content is hidden
-                      document.body.style.overflow = 'hidden';
-                      document.documentElement.style.overflow = 'hidden';
-                      // Scroll to top when hiding content
-                      window.scrollTo(0, 0);
-                    }
-                  }}
-                  className='mt-2 inline-flex items-center gap-3 cursor-pointer select-none px-4 py-2 rounded-lg uppercase tracking-wider font-semibold
+                href="#More"
+                onClick={() => {
+                  if (Ishidden === "hidden") {
+                    setHidden("block");
+                    setButtonText("contact with us latter");
+                    // Restore scrolling when content is revealed
+                    document.body.style.overflow = '';
+                    document.documentElement.style.overflow = '';
+                  } else {
+                    setHidden("hidden");
+                    setButtonText("Contact with us");
+                    // Hide scrolling when content is hidden
+                    document.body.style.overflow = 'hidden';
+                    document.documentElement.style.overflow = 'hidden';
+                    // Scroll to top when hiding content
+                    window.scrollTo(0, 0);
+                  }
+                }}
+                className='mt-2 inline-flex items-center gap-3 cursor-pointer select-none px-4 py-2 rounded-lg uppercase tracking-wider font-semibold
                              text-blueSiin underline decoration-blueSiin decoration-2 underline-offset-4
                              transition-all duration-300 ease-out
                              hover:-translate-y-0.5 hover:scale-105 hover:shadow-lg hover:bg-blueSiin/5 dark:hover:bg-blueSiin/10'
-                >
-                  <span>{buttonText}</span>
-                </a>
+              >
+                <span>{buttonText}</span>
+              </a>
             </div>
           </div>
         </div>
@@ -154,8 +213,8 @@ const ContactPage = () => {
                       <div>
                         <h4 className="font-bold text-gray-800 dark:text-white mb-1">Address</h4>
                         <p className="text-gray-600 dark:text-gray-300 text-sm">
-                          123 Digital Street<br />
-                          Tech District, Cyprus<br />
+                        Tarsana Street <br />
+                        Souk Al Jumaa, Tripoli,libya<br />
                           CY-12345
                         </p>
                       </div>
@@ -167,7 +226,8 @@ const ContactPage = () => {
                       </div>
                       <div>
                         <h4 className="font-bold text-gray-800 dark:text-white mb-1">Phone</h4>
-                        <p className="text-gray-600 dark:text-gray-300 text-sm">+357 123 456 789</p>
+                        <p className="text-gray-600 dark:text-gray-300 text-sm">+218931955624‬
+                        </p>
                       </div>
                     </div>
 
@@ -177,7 +237,7 @@ const ContactPage = () => {
                       </div>
                       <div>
                         <h4 className="font-bold text-gray-800 dark:text-white mb-1">Email</h4>
-                        <p className="text-gray-600 dark:text-gray-300 text-sm">hello@siin.com</p>
+                        <p className="text-gray-600 dark:text-gray-300 text-sm">siin.net.co@gmail.com</p>
                       </div>
                     </div>
 
@@ -186,11 +246,10 @@ const ContactPage = () => {
                         <MdAccessTime className="text-2xl text-blueSiin dark:text-white" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-gray-800 dark:text-white mb-1">Business Hours</h4>
-                        <p className="text-gray-600 dark:text-gray-300 text-sm">
-                          Monday - Friday: 9:00 AM - 6:00 PM<br />
-                          Saturday: 10:00 AM - 4:00 PM<br />
-                          Sunday: Closed
+                        <h4 className="font-bold text-gray-800 dark:text-white mb-1 text-lg">Business Hours</h4>
+                        <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                          <span className="text-green-600 dark:text-green-400 font-semibold">Sunday - Thursday:</span> 8:00 AM - 6:00 PM<br />
+                          <span className="text-red-500 dark:text-red-400 font-semibold">Friday - Saturday:</span> Closed
                         </p>
                       </div>
                     </div>
@@ -200,16 +259,16 @@ const ContactPage = () => {
                 {/* Social Media */}
                 <div>
                   <h4 className="font-bold text-gray-800 dark:text-white mb-4">Follow Us</h4>
-                  <div className="flex space-x-4">
-                    <a href="#" className="flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-200">
-                      <FaLinkedin className="text-2xl text-blueSiin dark:text-white hover:text-blue-700 dark:hover:text-blue-300" />
-                    </a>
-                    <a href="#" className="flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-200">
-                      <FaInstagram className="text-2xl text-blueSiin dark:text-white hover:text-pink-600 dark:hover:text-pink-400" />
-                    </a>
-                    <a href="#" className="flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-200">
-                      <FaTwitter className="text-2xl text-blueSiin dark:text-white hover:text-gray-900 dark:hover:text-blue-300" />
-                    </a>
+                  <div className="hidden md:flex">
+                    <ul className="flex space-x-3 text-sm" role="list" aria-label="Social media links">
+                      <li><a href="https://www.facebook.com/share/1JsYUEWWVw/" aria-label="Facebook" className="hover:text-blueSiin transition-colors">FB</a></li>
+                      <img src={Ellipse} alt="" role="presentation" />
+                      <li><a href="https://www.instagram.com/siin.dev?igsh=MnJ4Nm51Ym4zY3hv" aria-label="instagram" className="hover:text-blueSiin transition-colors">IN</a></li>
+                      {/*<img src={Ellipse} alt="" role="presentation" />
+                      <li><a href="#" aria-label="Dribbble" className="hover:text-blueSiin transition-colors">DR</a></li>
+                      <img src={Ellipse} alt="" role="presentation" />
+                      <li><a href="#" aria-label="Behance" className="hover:text-blueSiin transition-colors">BE</a></li>*/}
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -318,10 +377,39 @@ const ContactPage = () => {
 
                   <button
                     type="submit"
-                    className="w-full bg-blueSiin text-white py-4 px-8 rounded-xl font-semibold hover:bg-blue-700 dark:hover:bg-blue-400 hover:scale-105 hover:shadow-lg transition-all duration-200 focus:ring-2 focus:ring-blueSiin focus:outline-none"
+                    disabled={isLoading}
+                    className={`w-full py-4 px-8 rounded-xl font-semibold transition-all duration-200 focus:ring-2 focus:ring-blueSiin focus:outline-none ${
+                      isLoading 
+                        ? 'bg-gray-400 cursor-not-allowed' 
+                        : 'bg-blueSiin text-white hover:bg-blue-700 dark:hover:bg-blue-400 hover:scale-105 hover:shadow-lg'
+                    }`}
                   >
-                    Send Message
+                    {isLoading ? (
+                      <div className="flex items-center justify-center">
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                        Sending...
+                      </div>
+                    ) : (
+                      'Send Message'
+                    )}
                   </button>
+
+                  {/* Success/Error Messages */}
+                  {submitStatus === 'success' && (
+                    <div className="mt-4 p-4 bg-green-100 dark:bg-green-900/20 border border-green-300 dark:border-green-700 rounded-lg">
+                      <p className="text-green-800 dark:text-green-200 text-center font-semibold">
+                        ✅ Message sent successfully! We'll get back to you soon.
+                      </p>
+                    </div>
+                  )}
+
+                  {submitStatus === 'error' && (
+                    <div className="mt-4 p-4 bg-red-100 dark:bg-red-900/20 border border-red-300 dark:border-red-700 rounded-lg">
+                      <p className="text-red-800 dark:text-red-200 text-center font-semibold">
+                        ❌ Failed to send message. Please try again or contact us directly.
+                      </p>
+                    </div>
+                  )}
                 </form>
               </div>
             </div>

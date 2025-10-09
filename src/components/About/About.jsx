@@ -38,7 +38,7 @@ const About = () => {
 
     // Reset scroll position to top
     window.scrollTo(0, 0);
-    
+
     document.body.style.overflow = 'hidden';
     document.documentElement.style.overflow = 'hidden';
 
@@ -52,7 +52,7 @@ const About = () => {
   return (
     <>
 
-  <section className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
+      <section className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
         <div className='max-lg:px-4'>
           {/*left section*/}
           <div className="flex flex-col lg:flex-row w-full ">
@@ -71,13 +71,12 @@ const About = () => {
               </div>
               <div className=''>
                 <p className="text-2xl leading-[50px] uppercase text-justify text-gray-700 dark:text-gray-300">
-                  SIIN is a leading design & software development agency based in
-                  Cyprus. We help startups & Fortune 500 companies delight humans
-                  on the other side of the screen.
+                  SIIN is a leading design and software development agency based in Libya.
+                  We help startups and global enterprises build digital products that inspire, engage, and delight users around the world.
                 </p>
                 <a
                   href="#More"
-                  onClick={() => { 
+                  onClick={() => {
                     if (Ishidden === "hidden") {
                       setHidden("block");
                       setButtonText("Less About Siin");
@@ -107,7 +106,9 @@ const About = () => {
 
           <div className={`${Ishidden} relative w-full mt-12 md:mt-16`} id="More">
             <div className=" relative flex flex-col lg:flex-row justify-around items-baseline">
-              <img src={Brands} alt="Brands" className="w-[90%] md:w-[35rem] pt-7" />
+              <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase tracking-wider bg-gradient-to-r from-black to-blue-500 dark:from-white dark:to-blue-500 bg-clip-text text-transparent text-center leading-tight">
+                elevating brands <br /> in the digital age
+              </h2>
 
               {/*<img
                 src={Button}

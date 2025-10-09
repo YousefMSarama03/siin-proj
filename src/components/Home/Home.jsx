@@ -30,13 +30,13 @@ function Home() {
 
                         <div className="flex flex-col justify-center items-center md:hidden h-[200px] py-8">
                             <ul className="flex space-x-3 text-sm" role="list" aria-label="Social media links">
-                                <li><a href="#" aria-label="Facebook" className="hover:text-blueSiin transition-colors">FB</a></li>
+                                <li><a href="url(https://www.facebook.com/share/1JsYUEWWVw/)" aria-label="Facebook" className="hover:text-blueSiin transition-colors">FB</a></li>
                                 <img src={Ellipse} alt="" role="presentation" />
-                                <li><a href="#" aria-label="LinkedIn" className="hover:text-blueSiin transition-colors">IN</a></li>
-                                <img src={Ellipse} alt="" role="presentation" />
+                                <li><a href="url(https://www.instagram.com/siin.dev?igsh=MnJ4Nm51Ym4zY3hv)" aria-label="instagram" className="hover:text-blueSiin transition-colors">IN</a></li>
+                                {/*<img src={Ellipse} alt="" role="presentation" />
                                 <li><a href="#" aria-label="Dribbble" className="hover:text-blueSiin transition-colors">DR</a></li>
                                 <img src={Ellipse} alt="" role="presentation" />
-                                <li><a href="#" aria-label="Behance" className="hover:text-blueSiin transition-colors">BE</a></li>
+                                <li><a href="#" aria-label="Behance" className="hover:text-blueSiin transition-colors">BE</a></li>*/}
                             </ul>
                         </div>
                     </main>
