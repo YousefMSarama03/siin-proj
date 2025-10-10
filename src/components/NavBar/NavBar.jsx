@@ -1,26 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, memo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Ellipse from "../../assets/NavAssests/Ellipse.svg";
 import siin from "../../assets/NavAssests/siin.svg";
-import SearchIcon from "./SearchIcon";
-import Hr from "../../assets/NavAssests/hr.svg";
-import Burger from "../../assets/NavAssests/burger.svg";
-import BurgerBlack from "../../assets/NavAssests/burger-black.svg";
 import light from "../../assets/NavAssests/Union.svg";
 import moon from "../../assets/NavAssests/Half-moon.svg";
 import { useTheme } from "../../contexts/ThemeContext";
 
-const NavBar = () => {
+// Navigation items configuration
+const NAV_ITEMS = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Contact", path: "/contact" }
+];
+
+// Social media links configuration
+const SOCIAL_LINKS = [
+    { name: "Facebook", href: "https://www.facebook.com/share/1JsYUEWWVw/", label: "FB" },
+    { name: "Instagram", href: "https://www.instagram.com/siin.dev?igsh=MnJ4Nm51Ym4zY3hv", label: "IN" }
+];
+
+const NavBar = memo(() => {
     const [isOpened, setOpen] = useState(false);
     const location = useLocation();
     const [activeLink, setActiveLink] = useState(location.pathname);
     const { isDarkMode, toggleTheme } = useTheme();
 
+    // Memoized active link update
     useEffect(() => {
         setActiveLink(location.pathname);
     }, [location.pathname]);
 
-    // Prevent scrolling when menu is open
+    // Optimized scroll lock with cleanup
     useEffect(() => {
         if (isOpened) {
             document.body.style.overflow = 'hidden';
@@ -30,24 +41,72 @@ const NavBar = () => {
             document.documentElement.style.overflow = '';
         }
 
-        // Cleanup function to restore scrolling when component unmounts
         return () => {
             document.body.style.overflow = '';
             document.documentElement.style.overflow = '';
         };
     }, [isOpened]);
 
+    // Memoized handlers
+    const handleMenuToggle = useCallback(() => {
+        setOpen(prev => !prev);
+    }, []);
+
+    const handleMenuClose = useCallback(() => {
+        setOpen(false);
+    }, []);
+
+    const handleKeyDown = useCallback((e) => {
+        if (e.key === 'Escape' && isOpened) {
+            setOpen(false);
+        }
+    }, [isOpened]);
+
+    // Keyboard navigation effect
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyDown);
+        return () => document.removeEventListener('keydown', handleKeyDown);
+    }, [handleKeyDown]);
+
     return (
         <>
             {/* Modern Navbar */}
-            <nav className="w-full z-50 bg-white/90 dark:bg-black/90 backdrop-blur-xl text-black dark:text-white fixed border-b border-gray-200/30 dark:border-gray-700/30 transition-all duration-300 shadow-lg" role="navigation" aria-label="Main navigation">
+            <nav className="w-full z-50 bg-white/90 dark:bg-black/90 backdrop-blur-xl text-black dark:text-white fixed transition-all duration-300 shadow-lg" role="navigation" aria-label="Main navigation">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16 sm:h-20">
                         {/* Left Section - Social Icons (Desktop Only) */}
-                       
+                        <div className="hidden lg:flex lg:flex-1">
+                            <ul className="flex items-center space-x-3 text-sm" role="list" aria-label="Social media links">
+                                {SOCIAL_LINKS.map((social, index) => (
+                                    <React.Fragment key={social.name}>
+                                        <li>
+                                            <a 
+                                                href={social.href} 
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                aria-label={`Follow us on ${social.name}`} 
+                                                className="hover:text-blueSiin transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blueSiin/50 rounded px-1"
+                                            >
+                                                {social.label}
+                                            </a>
+                                        </li>
+                                        {index < SOCIAL_LINKS.length - 1 && (
+                                            <li>
+                                                <img 
+                                                    src={Ellipse} 
+                                                    alt="" 
+                                                    role="presentation" 
+                                                    className="w-1 h-1 opacity-60"
+                                                />
+                                            </li>
+                                        )}
+                                    </React.Fragment>
+                                ))}
+                            </ul>
+                        </div>
 
-                        {/* Center Section - Logo */}
-                        <div className="flex-1 flex justify-center lg:justify-start">
+                        {/* Logo Section - Left on small/medium, center on large screens */}
+                        <div className="flex items-center lg:flex-1 lg:justify-center">
                             <Link
                                 to="/"
                                 className="flex items-center space-x-2 group"
@@ -60,54 +119,37 @@ const NavBar = () => {
                             </Link>
                         </div>
 
+                        {/* Right Section - Empty for balance on large screens */}
+                        <div className="hidden lg:block flex-1"></div>
+
                         {/* Right Section - Theme Toggle & Menu */}
                         <div className="flex items-center space-x-3 sm:space-x-4">
-                            {/* Theme Toggle (Desktop) */}
-                            <div className="hidden sm:flex items-center bg-gray-100 dark:bg-gray-800 rounded-full p-1">
-                                <button
-                                    onClick={toggleTheme}
-                                    className={`flex items-center justify-center w-8 h-8 rounded-full transition-all duration-300 ${
-                                        !isDarkMode 
-                                            ? 'bg-white shadow-md text-gray-900' 
-                                            : 'text-gray-400 hover:text-gray-300'
-                                    }`}
-                                    aria-label="Light mode"
-                                >
-                                    <img src={light} alt="light" width="16px" />
-                                </button>
-                                <button
-                                    onClick={toggleTheme}
-                                    className={`flex items-center justify-center w-8 h-8 rounded-full transition-all duration-300 ${
-                                        isDarkMode 
-                                            ? 'bg-gray-700 shadow-md text-white' 
-                                            : 'text-gray-400 hover:text-gray-300'
-                                    }`}
-                                    aria-label="Dark mode"
-                                >
-                                    <img src={moon} alt="moon" width="16px" />
-                                </button>
-                            </div>
-
                             {/* Mobile Theme Toggle */}
                             <button
                                 onClick={toggleTheme}
-                                className="sm:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
-                                aria-label="Toggle theme"
+                                className="sm:hidden p-2 rounded-lg bg-white dark:bg-black hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blueSiin/50"
+                                aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
                             >
-                                <img src={isDarkMode ? light : moon} alt="theme toggle" width="20px" />
+                                <img 
+                                    src={isDarkMode ? light : moon} 
+                                    alt={`${isDarkMode ? 'Light' : 'Dark'} mode icon`} 
+                                    width="20" 
+                                    height="20"
+                                    loading="lazy"
+                                />
                             </button>
 
                             {/* Menu Button */}
-                            <button 
-                                className="relative inline-flex items-center justify-center p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-105" 
-                                onClick={() => setOpen(!isOpened)}
+                            <button
+                                className="relative inline-flex items-center justify-center p-2 rounded-lg bg-white dark:bg-black hover:bg-gray-100 dark:hover:bg-gray-900 transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blueSiin/50"
+                                onClick={handleMenuToggle}
                                 aria-label={isOpened ? "Close menu" : "Open menu"}
                                 aria-expanded={isOpened}
                             >
                                 <div className="w-6 h-6 flex flex-col justify-center items-center">
-                                    <span className={`block w-5 h-0.5 bg-current transition-all duration-300 ${isOpened ? 'rotate-45 translate-y-1' : ''}`}></span>
-                                    <span className={`block w-5 h-0.5 bg-current mt-1 transition-all duration-300 ${isOpened ? 'opacity-0' : ''}`}></span>
-                                    <span className={`block w-5 h-0.5 bg-current mt-1 transition-all duration-300 ${isOpened ? '-rotate-45 -translate-y-1' : ''}`}></span>
+                                    <span className={`block w-5 h-0.5 bg-current transition-all duration-200 ${isOpened ? 'rotate-45 translate-y-1' : ''}`}></span>
+                                    <span className={`block w-5 h-0.5 bg-current mt-1 transition-all duration-200 ${isOpened ? 'opacity-0' : ''}`}></span>
+                                    <span className={`block w-5 h-0.5 bg-current mt-1 transition-all duration-200 ${isOpened ? '-rotate-45 -translate-y-1' : ''}`}></span>
                                 </div>
                             </button>
                         </div>
@@ -116,24 +158,26 @@ const NavBar = () => {
             </nav>
 
             {/* Background Blur Overlay */}
-            <div 
-                className={`fixed inset-0 h-screen w-screen backdrop-blur-md bg-black/20 dark:bg-black/40 transition-all duration-300 z-[90] ${isOpened ? "opacity-100 visible" : "opacity-0 invisible"}`}
-                onClick={() => setOpen(false)}
+            <div
+                className={`fixed inset-0 h-screen w-screen backdrop-blur-md bg-black/20 dark:bg-black/40 transition-all duration-200 z-[90] ${isOpened ? "opacity-100 visible" : "opacity-0 invisible"}`}
+                onClick={handleMenuClose}
+                aria-hidden="true"
             />
 
             {/* Modern Sidebar Menu */}
-            <div 
-                className={`fixed top-0 right-0 flex flex-col h-screen w-80 sm:w-96 backdrop-blur-2xl transition-transform duration-300 z-[100] ${isOpened ? "translate-x-0 bg-white dark:bg-black shadow-2xl border-l border-gray-200/20 dark:border-gray-700/20" : "translate-x-full"}`}
+            <div
+                className={`fixed top-0 right-0 flex flex-col h-screen w-80 sm:w-96 backdrop-blur-2xl transition-transform duration-200 z-[100] ${isOpened ? "translate-x-0 bg-white dark:bg-black shadow-2xl border-l border-gray-200/20 dark:border-gray-700/20" : "translate-x-full"}`}
                 role="dialog"
                 aria-modal="true"
                 aria-label="Navigation menu"
+                aria-hidden={!isOpened}
             >
                 {/* Header */}
-                <div className="flex items-center justify-between p-6 border-b border-gray-200/20 dark:border-gray-700/20">
+                <div className="flex items-center justify-between p-6">
                     <h2 className="text-xl font-bold text-gray-900 dark:text-white">Menu</h2>
-                    <button 
-                        className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300" 
-                        onClick={() => setOpen(false)}
+                    <button
+                        className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blueSiin/50"
+                        onClick={handleMenuClose}
                         aria-label="Close menu"
                     >
                         <div className="w-6 h-6 flex flex-col justify-center items-center">
@@ -146,21 +190,15 @@ const NavBar = () => {
                 {/* Navigation Links */}
                 <nav className="flex-1 px-6 py-8" role="navigation" aria-label="Main menu">
                     <div className="space-y-2">
-                        {[
-                            { name: "Home", path: "/" },
-                            { name: "About", path: "/about" },
-                            { name: "Services", path: "/services" },
-                            { name: "Contact", path: "/contact" }
-                        ].map((item) => (
+                        {NAV_ITEMS.map((item) => (
                             <Link
                                 key={item.path}
                                 to={item.path}
-                                onClick={() => setOpen(false)}
-                                className={`flex items-center px-4 py-3 rounded-xl transition-all duration-300 text-lg font-medium ${
-                                    activeLink === item.path 
-                                        ? "text-blueSiin bg-blueSiin/10 dark:bg-blueSiin/20 shadow-md scale-105" 
+                                onClick={handleMenuClose}
+                                className={`flex items-center px-4 py-3 rounded-xl transition-all duration-200 text-lg font-medium focus:outline-none focus:ring-2 focus:ring-blueSiin/50 ${activeLink === item.path
+                                        ? "text-blueSiin bg-blueSiin/10 dark:bg-blueSiin/20 shadow-md scale-105"
                                         : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blueSiin hover:scale-105"
-                                }`}
+                                    }`}
                                 aria-current={activeLink === item.path ? "page" : undefined}
                             >
                                 <span>{item.name}</span>
@@ -169,31 +207,29 @@ const NavBar = () => {
                     </div>
 
                     {/* Theme Toggle */}
-                    <div className="mt-8 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl">
+                    <div className="mt-8 p-4 bg-white dark:bg-black rounded-xl">
                         <h3 className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">Theme</h3>
-                        <div className="flex bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
+                        <div className="flex bg-gray-100 dark:bg-gray-900 rounded-lg p-1">
                             <button
                                 onClick={toggleTheme}
-                                className={`flex-1 flex items-center justify-center space-x-2 py-2 px-3 rounded-md transition-all duration-300 text-sm font-medium ${
-                                    !isDarkMode 
-                                        ? 'bg-white shadow-sm text-gray-900' 
-                                        : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
-                                }`}
+                                className={`flex-1 flex items-center justify-center space-x-2 py-2 px-3 rounded-md transition-all duration-200 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blueSiin/50 ${!isDarkMode
+                                        ? 'bg-white shadow-sm text-gray-900'
+                                        : 'bg-black text-white'
+                                    }`}
                                 aria-pressed={!isDarkMode}
                             >
-                                <img src={light} alt="light" width="16px" />
+                                <img src={light} alt="Light mode" width="16" height="16" loading="lazy" />
                                 <span>Light</span>
                             </button>
                             <button
                                 onClick={toggleTheme}
-                                className={`flex-1 flex items-center justify-center space-x-2 py-2 px-3 rounded-md transition-all duration-300 text-sm font-medium ${
-                                    isDarkMode 
-                                        ? 'bg-gray-600 shadow-sm text-white' 
-                                        : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
-                                }`}
+                                className={`flex-1 flex items-center justify-center space-x-2 py-2 px-3 rounded-md transition-all duration-200 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blueSiin/50 ${isDarkMode
+                                        ? 'bg-black text-white'
+                                        : 'bg-white text-gray-900'
+                                    }`}
                                 aria-pressed={isDarkMode}
                             >
-                                <img src={moon} alt="moon" width="16px" />
+                                <img src={moon} alt="Dark mode" width="16" height="16" loading="lazy" />
                                 <span>Dark</span>
                             </button>
                         </div>
@@ -201,7 +237,7 @@ const NavBar = () => {
                 </nav>
 
                 {/* Footer */}
-                <div className="p-6 border-t border-gray-200/20 dark:border-gray-700/20">
+                <div className="p-6">
                     <div className="flex items-center space-x-3">
                         <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
                             S
@@ -215,6 +251,8 @@ const NavBar = () => {
             </div>
         </>
     );
-};
+});
+
+NavBar.displayName = 'NavBar';
 
 export default NavBar;

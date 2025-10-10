@@ -122,15 +122,11 @@ const Services = () => {
         {/* Services Grid */}
         <div id="More" className={`${Ishidden} relative w-full mt-12 md:mt-16 border-0`}>
           <div className="relative flex flex-col lg:flex-row justify-around items-baseline">
-            <div className="w-[90%] md:w-[35rem] pt-7">
+            <div className="w-[90%] md:w-[35rem] pt-7 text-center">
               <h2 className="text-2xl md:text-3xl font-bold mb-4">Our Services</h2>
               <p className="text-gray-300 text-lg">Comprehensive digital solutions for modern businesses</p>
             </div>
-            <img
-              src={Button}
-              alt="button icon"
-              className="relative top-6 w-[8rem] max-lg:left-[250px] lg:w-[14rem] hover:scale-110 hover:shadow-lg hover:ring-2 hover:ring-blue-200 dark:hover:ring-blue-900 transition-all duration-200 border-0"
-            />
+            
           </div>
 
           

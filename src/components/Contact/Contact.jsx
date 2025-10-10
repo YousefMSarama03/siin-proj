@@ -181,7 +181,7 @@ const ContactPage = () => {
         {/* Contact Form Section */}
         <div id="More" className={`${Ishidden} relative w-full mt-12 md:mt-16`}>
           <div className="relative flex flex-col lg:flex-row justify-around items-baseline">
-            <div className="w-[90%] md:w-[35rem] pt-7">
+            <div className="w-[90%] md:w-[35rem] pt-7 text-center">
               <h2 className="text-2xl md:text-3xl font-bold mb-4">Get In Touch</h2>
               <p className="text-gray-500 text-lg">Fill out the form below and we'll get back to you within 24 hours</p>
             </div>
