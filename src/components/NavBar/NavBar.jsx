@@ -124,20 +124,7 @@ const NavBar = memo(() => {
 
                         {/* Right Section - Theme Toggle & Menu */}
                         <div className="flex items-center space-x-3 sm:space-x-4">
-                            {/* Mobile Theme Toggle */}
-                            <button
-                                onClick={toggleTheme}
-                                className="sm:hidden p-2 rounded-lg bg-white dark:bg-black hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blueSiin/50"
-                                aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
-                            >
-                                <img 
-                                    src={isDarkMode ? light : moon} 
-                                    alt={`${isDarkMode ? 'Light' : 'Dark'} mode icon`} 
-                                    width="20" 
-                                    height="20"
-                                    loading="lazy"
-                                />
-                            </button>
+                           
 
                             {/* Menu Button */}
                             <button
