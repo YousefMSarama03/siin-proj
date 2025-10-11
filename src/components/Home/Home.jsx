@@ -5,14 +5,17 @@ import Tag from "../../assets/homeAssests/Tag.svg"
 import Ellipse from "../../assets/NavAssests/Ellipse.svg";
 import Video from "./homeAsset/Video.svg";
 import Footer from "../Footer/Footer";
+import usePageTitle from "../../hooks/usePageTitle";
 
 
 function Home() {
+    usePageTitle("Home");
+    
     return (
         <>
             <section className="bg-white text-gray-800 dark:bg-black dark:text-white transition-colors duration-300">
                 <div className='max-lg:px-4'>
-                    <main className='relative flex flex-col justify-between pt-28 w-full min-h-screen overflow-hidden' role="main">
+                    <main className='relative flex flex-col justify-between pt-24 sm:pt-28 md:pt-32 w-full min-h-screen overflow-hidden' role="main">
                         <div className='absolute left-4 md:left-16 pt-5 flex w-full max-md:justify-end md:items-baseline md:space-x-8'>
                             <img src={Tag} alt="tag" className='w-[13px] max-md:hidden' />
                             <img src={S} alt="S" className='lg:w-[430px] md:w-[330px] max-md:w-[214px]' />

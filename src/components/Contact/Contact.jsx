@@ -9,12 +9,30 @@ import Button from "../../assets/homeAssests/Button.svg";
 import Line from "../../assets/homeAssests/Line.svg";
 import Ellipse from "../../assets/NavAssests/Ellipse.svg";
 import Footer from "../Footer/Footer";
+import usePageTitle from "../../hooks/usePageTitle";
 
 const ContactPage = () => {
+  usePageTitle("Contact");
+  
   const [Ishidden, setHidden] = useState("hidden");
   const [buttonText, setButtonText] = useState("Contact with us");
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
+
+  // Helper function to check if content overflows and manage scroll
+  const checkContentOverflow = () => {
+    const isContentOverflowing = document.documentElement.scrollHeight > window.innerHeight;
+    
+    if (isContentOverflowing) {
+      // Allow scrolling if content overflows
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    } else {
+      // Disable scrolling if all content fits on screen
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    }
+  };
 
   useEffect(() => {
     const previousBodyOverflow = document.body.style.overflow;
@@ -23,8 +41,10 @@ const ContactPage = () => {
     // Reset scroll position to top
     window.scrollTo(0, 0);
 
-    document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
+    // Check if content overflows and set scroll accordingly
+    setTimeout(() => {
+      checkContentOverflow();
+    }, 100);
 
     return () => {
       document.body.style.overflow = previousBodyOverflow;
@@ -124,7 +144,7 @@ const ContactPage = () => {
       <div className='max-lg:px-4'>
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row w-full">
-          <div className="relative hidden w-full lg:w-[35%] h-auto md:h-[780px] lg:flex items-center justify-start pt-10 md:pt-28">
+          <div className="relative hidden w-full lg:w-[35%] h-auto md:h-[780px] lg:flex items-center justify-start pt-20 sm:pt-24 md:pt-32">
             <img src={Tag} alt="Tag" className='w-[3rem] relative z-50 left-[55px] bottom-14 h-auto md:w-[3rem] md:h-[35rem]' />
             <h1 className="text-2xl md:text-4xl relative left-[11rem] bottom-[19rem] mt-4 font-bold text-gray-900 dark:text-white">
               <span className='underline decoration-gray-500/60 dark:decoration-gray-500/60 light:decoration-gray-300/60 decoration-2 underline-offset-[1rem]'>CO</span>NTACT
@@ -134,7 +154,7 @@ const ContactPage = () => {
 
           {/* Right Section */}
           <div className="w-full lg:w-[65%] flex flex-col justify-center lg:text-left text-start lg:p-24 border-0">
-            <div className='text-start uppercase text-3xl lg:hidden py-9 text-gray-900 dark:text-white font-bold'>
+            <div className='text-start uppercase text-3xl lg:hidden py-20 sm:py-16 text-gray-900 dark:text-white font-bold'>
               <span className='underline decoration-slate-50 decoration-1 underline-offset-[1rem]'>CON</span>TACT
             </div>
 
@@ -148,32 +168,43 @@ const ContactPage = () => {
                 Get in touch with our team of experts and let's discuss how we can help
                 you achieve your goals.
               </p>
-              <a
-                href="#More"
+              <button
                 onClick={() => {
                   if (Ishidden === "hidden") {
                     setHidden("block");
                     setButtonText("contact with us latter");
-                    // Restore scrolling when content is revealed
-                    document.body.style.overflow = '';
-                    document.documentElement.style.overflow = '';
+                    // Check if content overflows after expanding
+                    setTimeout(() => {
+                      checkContentOverflow();
+                      // Only scroll if content overflows
+                      const isContentOverflowing = document.documentElement.scrollHeight > window.innerHeight;
+                      if (isContentOverflowing) {
+                        const moreSection = document.getElementById('More');
+                        if (moreSection) {
+                          moreSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                      }
+                    }, 100);
                   } else {
                     setHidden("hidden");
                     setButtonText("Contact with us");
-                    // Hide scrolling when content is hidden
-                    document.body.style.overflow = 'hidden';
-                    document.documentElement.style.overflow = 'hidden';
-                    // Scroll to top when hiding content
-                    window.scrollTo(0, 0);
+                    // Check if content overflows after collapsing
+                    setTimeout(() => {
+                      checkContentOverflow();
+                      // Scroll to top when hiding content
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }, 100);
                   }
                 }}
                 className='mt-2 inline-flex items-center gap-3 cursor-pointer select-none px-4 py-2 rounded-lg uppercase tracking-wider font-semibold
                              text-blueSiin underline decoration-blueSiin decoration-2 underline-offset-4
                              transition-all duration-300 ease-out
-                             hover:-translate-y-0.5 hover:scale-105 hover:shadow-lg hover:bg-blueSiin/5 dark:hover:bg-blueSiin/10'
+                             hover:-translate-y-0.5 hover:scale-105 hover:shadow-lg hover:bg-blueSiin/5 dark:hover:bg-blueSiin/10
+                             focus:outline-none focus:ring-2 focus:ring-blueSiin/50 focus:ring-offset-2
+                             active:scale-95'
               >
                 <span>{buttonText}</span>
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -412,9 +443,12 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
-      <div className="mt-16 lg:px-[160px] ">
-        <Footer />
-      </div>
+      {/* Only show footer when content is expanded */}
+      {Ishidden === "block" && (
+        <div className="mt-16 lg:px-[160px] ">
+          <Footer />
+        </div>
+      )}
     </section>
   );
 };
