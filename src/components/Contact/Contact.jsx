@@ -80,9 +80,9 @@ const ContactPage = () => {
       // If EmailJS env variables are provided, use EmailJS to send the email.
       // Create the following env vars in your Vite project (.env):
       // VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, VITE_EMAILJS_PUBLIC_KEY
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      const serviceId = 'service_v3m176q';
+      const templateId = 'template_97v11f9';
+      const publicKey = '4BaZFw8D2gqiqq2NI';
 
       if (serviceId && templateId && publicKey) {
         const templateParams = {
@@ -92,7 +92,8 @@ const ContactPage = () => {
           phone: formData.phone,
           service: formData.service,
           message: formData.message,
-          to_email: 'yosefsarama23@gmail.com'
+          to_email: 'yosefsarama23@gmail.com',
+          time: new Date().toLocaleString()
         };
 
         // attempt to send and capture the response for debugging

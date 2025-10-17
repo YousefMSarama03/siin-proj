@@ -43,9 +43,9 @@ const Footer = () => {
                 <button onClick={goToForm} aria-label="Get started with SIIN services" className="inline-flex items-center justify-center bg-blueSiin text-white lg:px-8 lg:py-4 px-3 py-1.5 text-xs rounded-full transition-all duration-200 hover:bg-blue-700 dark:hover:bg-blue-400 hover:scale-105 hover:shadow-lg capitalize shadow-md border-0">
                   Get started
                 </button>
-                <button className="bg-white text-black text-xs lg:px-8 lg:py-4 px-3 py-1.5 rounded-full transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:scale-105 hover:shadow-lg capitalize shadow-md dark:bg-[#262626] dark:text-white border-0" aria-label="Schedule a free consultation">
+                {/* <button className="bg-white text-black text-xs lg:px-8 lg:py-4 px-3 py-1.5 rounded-full transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:scale-105 hover:shadow-lg capitalize shadow-md dark:bg-[#262626] dark:text-white border-0" aria-label="Schedule a free consultation">
                   Free consultation
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
