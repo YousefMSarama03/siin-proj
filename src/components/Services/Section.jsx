@@ -6,28 +6,10 @@ import Contact from "../../assets/homeAssests/contact.svg";
 import Button from "../../assets/homeAssests/Button.svg";
 import Line from "../../assets/homeAssests/Line.svg";
 import Footer from "../Footer/Footer";
-import usePageTitle from "../../hooks/usePageTitle";
 
 const Services = () => {
-  usePageTitle("Services");
-  
   const [Ishidden, setHidden] = useState("hidden");
   const [buttonText, setButtonText] = useState("Explore Siin's services");
-
-  // Helper function to check if content overflows and manage scroll
-  const checkContentOverflow = () => {
-    const isContentOverflowing = document.documentElement.scrollHeight > window.innerHeight;
-    
-    if (isContentOverflowing) {
-      // Allow scrolling if content overflows
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
-    } else {
-      // Disable scrolling if all content fits on screen
-      document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden';
-    }
-  };
 
   useEffect(() => {
     const previousBodyOverflow = document.body.style.overflow;
@@ -36,10 +18,8 @@ const Services = () => {
     // Reset scroll position to top
     window.scrollTo(0, 0);
     
-    // Check if content overflows and set scroll accordingly
-    setTimeout(() => {
-      checkContentOverflow();
-    }, 100);
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
 
     return () => {
       document.body.style.overflow = previousBodyOverflow;
@@ -86,9 +66,9 @@ const Services = () => {
       <div className="max-lg:px-4">
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row w-full">
-          <div className="relative hidden w-full lg:w-[35%] h-auto md:h-[780px] lg:flex items-center justify-start pt-20 sm:pt-24 md:pt-32">
+          <div className="relative hidden w-full lg:w-[35%] h-auto md:h-[780px] lg:flex items-center justify-start pt-20 md:pt-44">
             <img src={Tag} alt="Tag" className='w-[3rem] relative z-50 left-[55px] bottom-14 h-auto md:w-[3rem] md:h-[35rem]' />
-            <h1 className="text-2xl md:text-4xl relative left-[11rem] bottom-[19rem] mt-4 font-bold text-gray-900 dark:text-white">
+            <h1 className="text-2xl md:text-4xl relative left-[8rem] md:left-[9rem] lg:left-[11rem] bottom-[17rem] md:bottom-[18rem] lg:bottom-[20rem] mt-12 font-bold text-gray-900 dark:text-white">
               <span className='underline decoration-gray-500/60 dark:decoration-gray-500/60 light:decoration-gray-300/60 decoration-2 underline-offset-[1rem]'>SE</span>RVICES
             </h1>
             <img src={N} alt="N image" className='absolute w-[30rem] mt-24 top-24 right-4 md:top-28 md:right-auto' />
@@ -96,7 +76,7 @@ const Services = () => {
 
           {/* Right Section */}
           <div className="w-full lg:w-[65%] flex flex-col justify-center lg:text-left text-start lg:p-24 border-0">
-            <div className='text-start uppercase text-3xl lg:hidden py-20 sm:py-16 font-bold text-gray-900 dark:text-white'>
+            <div className='text-start uppercase text-3xl lg:hidden py-[5rem] font-bold text-gray-900 dark:text-white'>
               <span className='underline decoration-slate-50 decoration-1 underline-offset-[1rem]'>SER</span>VICES
             </div>
 
@@ -105,47 +85,36 @@ const Services = () => {
             </div>
 
             <div className=''>
-              <p className="text-2xl leading-[50px] uppercase text-justify text-gray-700 dark:text-gray-300">
+              <p className="text-2xl md:leading-[50px] uppercase text-justify text-gray-700 dark:text-gray-300">
                 SIIN offers a full range of digital services to help your business thrive in the modern world.
                 From web development to cybersecurity, we deliver cutting-edge solutions tailored to your needs.
               </p>
-              <button
+              <a
+                href="#More"
                 onClick={() => {
                   if (Ishidden === "hidden") {
                     setHidden("block");
                     setButtonText("hide Siin's services");
-                    // Check if content overflows after expanding
-                    setTimeout(() => {
-                      checkContentOverflow();
-                      // Only scroll if content overflows
-                      const isContentOverflowing = document.documentElement.scrollHeight > window.innerHeight;
-                      if (isContentOverflowing) {
-                        const moreSection = document.getElementById('More');
-                        if (moreSection) {
-                          moreSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }
-                      }
-                    }, 100);
+                    // Restore scrolling when content is revealed
+                    document.body.style.overflow = '';
+                    document.documentElement.style.overflow = '';
                     } else {
                       setHidden("hidden");
                       setButtonText("Explore Siin's services");
-                      // Check if content overflows after collapsing
-                      setTimeout(() => {
-                        checkContentOverflow();
-                        // Scroll to top when hiding content
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                      }, 100);
+                      // Hide scrolling when content is hidden
+                      document.body.style.overflow = 'hidden';
+                      document.documentElement.style.overflow = 'hidden';
+                      // Scroll to top when hiding content
+                      window.scrollTo(0, 0);
                     }
                 }}
                 className='mt-2 inline-flex items-center gap-3 cursor-pointer select-none px-4 py-2 rounded-lg uppercase tracking-wider font-semibold
                              text-blueSiin underline decoration-blueSiin decoration-2 underline-offset-4
                              transition-all duration-300 ease-out
-                             hover:-translate-y-0.5 hover:scale-105 hover:shadow-lg hover:bg-blueSiin/5 dark:hover:bg-blueSiin/10
-                             focus:outline-none focus:ring-2 focus:ring-blueSiin/50 focus:ring-offset-2
-                             active:scale-95'
+                             hover:-translate-y-0.5 hover:scale-105 hover:shadow-lg hover:bg-blueSiin/5 dark:hover:bg-blueSiin/10'
               >
               <span>{buttonText}</span>
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -181,12 +150,10 @@ const Services = () => {
             </div>
           </div>
 
-          {/* Call to Action - Only show footer when content is expanded */}
-          {Ishidden === "block" && (
-            <div className="mt-16 lg:px-[160px]">
-              <Footer />
-            </div>
-          )}
+          {/* Call to Action */}
+          <div className="mt-16 lg:px-[160px]">
+            <Footer />
+          </div>
         </div>
       </div>
 
