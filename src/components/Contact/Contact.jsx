@@ -284,7 +284,7 @@ const ContactPage = () => {
                 {/* Social Media */}
                 <div>
                   <h4 className="font-bold text-gray-800 dark:text-white mb-4">Follow Us</h4>
-                  <div className="hidden md:flex">
+                  <div className=" md:flex">
                     <ul className="flex space-x-3 text-sm" role="list" aria-label="Social media links">
                       <li><a href="https://www.facebook.com/share/1JsYUEWWVw/" aria-label="Facebook" className="hover:text-blueSiin transition-colors">FB</a></li>
                       <img src={Ellipse} alt="" role="presentation" />
