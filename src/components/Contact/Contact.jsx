@@ -207,8 +207,8 @@ const ContactPage = () => {
 
         {/* Contact Form Section */}
         <div id="More" className={`${Ishidden} relative w-full mt-12 md:mt-16`}>
-          <div className="relative flex flex-col lg:flex-row justify-around items-baseline">
-            <div className="w-[90%] md:w-[35rem] pt-7 text-center">
+          <div className="relative  lg:flex-row justify-around items-baseline">
+            <div className="  pt-7 text-center">
               <h2 className="text-2xl md:text-3xl font-bold mb-4">Get In Touch</h2>
               <p className="text-gray-500 text-lg">Fill out the form below and we'll get back to you within 24 hours</p>
             </div>
@@ -251,7 +251,7 @@ const ContactPage = () => {
                       </div>
                       <div>
                         <h4 className="font-bold text-gray-800 dark:text-white mb-1">Phone</h4>
-                        <p className="text-gray-600 dark:text-gray-300 text-sm">+218931955624‬
+                        <p className="text-gray-600 dark:text-gray-300 text-sm">+218 931 955 624‬
                         </p>
                       </div>
                     </div>
@@ -361,7 +361,7 @@ const ContactPage = () => {
                         value={formData.phone}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 bg-gray-100/80 dark:bg-gray-800/80 text-black dark:text-white rounded-xl placeholder-gray-500 dark:placeholder-gray-400 shadow-sm focus:shadow-lg focus:ring-2 focus:ring-blueSiin focus:outline-none transition-all border-0 hover:shadow-lg"
-                        placeholder="+357 123 456 789"
+                        placeholder="+218 931 955 624"
                       />
                     </div>
                   </div>

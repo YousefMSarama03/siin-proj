@@ -70,7 +70,7 @@ const About = () => {
                 We are a digital production team.
               </div>
               <div className=''>
-                <p className="text-2xl md:leading-[50px] uppercase text-justify text-gray-700 dark:text-gray-300">
+                <p className="text-2xl md:leading-[50px] uppercase md:text-justify text-gray-700 dark:text-gray-300">
                   SIIN is a leading design and software development agency based in Libya.
                   We help startups and global enterprises build digital products that inspire, engage, and delight users around the world.
                 </p>
@@ -118,7 +118,7 @@ const About = () => {
             </div>
            
             <div className="lg:px-[190px]">
-              <p className="text-sm md:text-[18px] md:text-start pt-10 leading-[40px] uppercase text-justify text-gray-700 dark:text-gray-300">
+              <p className="text-sm md:text-[18px] md:text-start pt-10 leading-[40px] uppercase md:text-justify text-gray-700 dark:text-gray-300">
                 Welcome to SIIN, your trusted partner in the dynamic world of
                 digital solutions. We are a passionate team of creative minds, tech
                 enthusiasts, and digital strategists, dedicated to empowering
@@ -133,9 +133,9 @@ const About = () => {
 
 
             <div className='w-full h-auto md:mt-[150px] mt-[65px]'>
-              <div className='md:text-center items-center mb-12'>
+              <div className='text-center items-center mb-12'>
                 <h1 className='lg:text-[48px] text-[25px] uppercase font-bold text-gray-900 dark:text-white'><span className='blueSiin '>Our</span> Team Members</h1>
-                <p className='text-sm md:text-[18px] text-balance uppercase leading-[40px] lg:px-72 pt-4 text-gray-700 dark:text-gray-300'>Partnering with SIIN offers a multitude of advantages. Experience increased brand visibility, improved customer engagement, and higher ROI. Our tailored solutions are designed to meet your unique business needs, ensuring lasting success.</p>
+                <p className='text-sm md:text-[18px]  uppercase leading-[40px] lg:px-72 pt-4 text-gray-700 dark:text-gray-300'>Partnering with SIIN offers a multitude of advantages. Experience increased brand visibility, improved customer engagement, and higher ROI. Our tailored solutions are designed to meet your unique business needs, ensuring lasting success.</p>
               </div>
 
               <div className='w-full h-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto px-8 my-12'>
@@ -143,9 +143,9 @@ const About = () => {
               </div>
 
               <div className='flex flex-col xl:px-[10rem] max-md:mt-[32px]'>
-                <div className='flex flex-col md:items-center'>
+                <div className='flex flex-col items-center'>
                   <h1 className='lg:text-[3rem] text-[2rem] capitalize font-bold pb-4 flex text-gray-900 dark:text-white'><span className='blueSiin'>Our </span>&nbsp; Achievements</h1>
-                  <p className='text-[18px] font-light md:text-center leading-[35px] uppercase px-2 text-gray-700 dark:text-gray-300'>Witness the brilliance of our previous projects. Our portfolio showcases the successful collaborations we've had with diverse clients across various industries. Let our work speak for itself.</p>
+                  <p className='text-[18px] font-light text-center leading-[35px] uppercase px-2 text-gray-700 dark:text-gray-300'>Witness the brilliance of our previous projects. Our portfolio showcases the successful collaborations we've had with diverse clients across various industries. Let our work speak for itself.</p>
                 </div>
                 {/* full achievements */}
                 <div className='mt-8'>

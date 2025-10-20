@@ -31,13 +31,13 @@ const Footer = () => {
       <div className='bg-white/80 dark:bg-[#2222] rounded-2xl shadow-sm mx-2 mt-4'>
         <div className='py-[120px] h-auto'>
           <div className='lg:px-[160px]'>
-            <div className='flex flex-col justify-center md:items-center gap-5 md:text-center'>
+            <div className='flex flex-col justify-center items-center gap-5 text-center'>
               <h1 className='lg:text-[48px] text-[22px] capitalize font-bold text-gray-900 dark:text-white'>Ready to Transform Your Digital Presence?</h1>
               <p className='md:text-center lg:text-[18px] text-[11px] text-gray-600 dark:text-gray-300 capitalize'>
                 Take the first step towards digital success with SIIN by your side. Our team of experts is eager to craft tailored solutions that drive growth for your business. Whether you need a stunning website, a powerful mobile app, or a data-driven marketing campaign, we've got you covered. Let's embark on this transformative journey together.
               </p>
             </div>
-            <div className='flex flex-col justify-center md:items-center py-6 gap-[20px]'>
+            <div className='flex flex-col justify-center items-center py-6 gap-[20px]'>
               <h1 className='lg:text-[20px] text-[12px] text-gray-900 dark:text-white'>Unlock Your Digital Potential Today</h1>
               <div className='flex gap-[10px]'>
                 <button onClick={goToForm} aria-label="Get started with SIIN services" className="inline-flex items-center justify-center bg-blueSiin text-white lg:px-8 lg:py-4 px-3 py-1.5 text-xs rounded-full transition-all duration-200 hover:bg-blue-700 dark:hover:bg-blue-400 hover:scale-105 hover:shadow-lg capitalize shadow-md border-0">

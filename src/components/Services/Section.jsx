@@ -85,7 +85,7 @@ const Services = () => {
             </div>
 
             <div >
-              <p className="text-2xl md:leading-[50px] uppercase text-justify text-gray-700 dark:text-gray-300">
+              <p className="text-2xl md:leading-[50px] uppercase  text-gray-700 dark:text-gray-300">
                 SIIN offers a full range of digital services to help your business thrive in the modern world.
                 From web development to cybersecurity, we deliver cutting-edge solutions tailored to your needs.
               </p>
@@ -121,9 +121,9 @@ const Services = () => {
 
         {/* Services Grid */}
         <div id="More" className={`${Ishidden} relative w-full mt-12 md:mt-16 border-0`}>
-          <div className="relative flex flex-col lg:flex-row justify-around items-baseline">
-            <div className="w-[90%] md:w-[35rem] pt-7 md:text-center">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">Our Services</h2>
+          <div className="relative lg:flex-row justify-around items-baseline">
+            <div className="  pt-7 text-center">
+              <h2 className="text-2xl text-3xl font-bold mb-4">Our Services</h2>
               <p className="text-gray-300 text-lg">Comprehensive digital solutions for modern businesses</p>
             </div>
             
