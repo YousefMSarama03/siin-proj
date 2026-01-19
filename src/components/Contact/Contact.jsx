@@ -80,9 +80,9 @@ const ContactPage = () => {
       // If EmailJS env variables are provided, use EmailJS to send the email.
       // Create the following env vars in your Vite project (.env):
       // VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, VITE_EMAILJS_PUBLIC_KEY
-      const serviceId = 'service_v3m176q';
-      const templateId = 'template_97v11f9';
-      const publicKey = '4BaZFw8D2gqiqq2NI';
+      const serviceId = 'service_ti0z5be';
+      const templateId = 'template_hhtn6qv';
+      const publicKey = 'hR2tCy8xIFboapkOp';
 
       if (serviceId && templateId && publicKey) {
         const templateParams = {
@@ -286,8 +286,8 @@ const ContactPage = () => {
                   <h4 className="font-bold text-gray-800 dark:text-white mb-4">Follow Us</h4>
                   <div className=" md:flex">
                     <ul className="flex space-x-3 text-sm" role="list" aria-label="Social media links">
-                      <li><a href="https://www.facebook.com/share/1JsYUEWWVw/" aria-label="Facebook" className="hover:text-blueSiin transition-colors">FB</a></li>
-                      <img src={Ellipse} alt="" role="presentation" />
+                      {/*<li><a href="https://www.facebook.com/share/1JsYUEWWVw/" aria-label="Facebook" className="hover:text-blueSiin transition-colors">FB</a></li>
+                      <img src={Ellipse} alt="" role="presentation" />*/}
                       <li><a href="https://www.instagram.com/siin.dev?igsh=MnJ4Nm51Ym4zY3hv" aria-label="instagram" className="hover:text-blueSiin transition-colors">IN</a></li>
                       {/*<img src={Ellipse} alt="" role="presentation" />
                       <li><a href="#" aria-label="Dribbble" className="hover:text-blueSiin transition-colors">DR</a></li>

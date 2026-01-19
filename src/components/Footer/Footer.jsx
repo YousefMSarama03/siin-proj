@@ -59,8 +59,8 @@ const Footer = () => {
               <div className='flex flex-row justify-center items-center gap-5'>
                 <div className=" md:flex">
                   <ul className="flex space-x-3 text-sm" role="list" aria-label="Social media links">
-                    <li><a href="https://www.facebook.com/share/1JsYUEWWVw/" aria-label="Facebook" className="hover:text-blueSiin transition-colors">FB</a></li>
-                    <img src={Ellipse} alt="" role="presentation" />
+                    {/*<li><a href="https://www.facebook.com/share/1JsYUEWWVw/" aria-label="Facebook" className="hover:text-blueSiin transition-colors">FB</a></li>*/}
+                    {/*<img src={Ellipse} alt="" role="presentation" />*/}
                     <li><a href="https://www.instagram.com/siin.dev?igsh=MnJ4Nm51Ym4zY3hv" aria-label="instagram" className="hover:text-blueSiin transition-colors">IN</a></li>
                     {/*<img src={Ellipse} alt="" role="presentation" />
                     <li><a href="#" aria-label="Dribbble" className="hover:text-blueSiin transition-colors">DR</a></li>

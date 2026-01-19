@@ -16,7 +16,7 @@ const NAV_ITEMS = [
 
 // Social media links configuration
 const SOCIAL_LINKS = [
-    { name: "Facebook", href: "https://www.facebook.com/share/1JsYUEWWVw/", label: "FB" },
+    {/* name: "Facebook", href: "https://www.facebook.com/share/1JsYUEWWVw/", label: "FB" */},
     { name: "Instagram", href: "https://www.instagram.com/siin.dev?igsh=MnJ4Nm51Ym4zY3hv", label: "IN" }
 ];
 
@@ -90,7 +90,7 @@ const NavBar = memo(() => {
                                                 {social.label}
                                             </a>
                                         </li>
-                                        {index < SOCIAL_LINKS.length - 1 && (
+                                        {/*index < SOCIAL_LINKS.length - 1 && (
                                             <li>
                                                 <img 
                                                     src={Ellipse} 
@@ -99,7 +99,7 @@ const NavBar = memo(() => {
                                                     className="w-1 h-1 opacity-60"
                                                 />
                                             </li>
-                                        )}
+                                        )*/}
                                     </React.Fragment>
                                 ))}
                             </ul>
